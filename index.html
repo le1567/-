@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小乐开发</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>节日倒计时</h1>
+            <div id="currentTime"></div>
+        </header>
+
+        <div class="countdown-display">
+            <h2 id="eventName">选择一个节日</h2>
+            <div class="countdown-timer">
+                <div class="time-block">
+                    <span id="days">00</span>
+                    <label>天</label>
+                </div>
+                <div class="time-block">
+                    <span id="hours">00</span>
+                    <label>时</label>
+                </div>
+                <div class="time-block">
+                    <span id="minutes">00</span>
+                    <label>分</label>
+                </div>
+                <div class="time-block">
+                    <span id="seconds">00</span>
+                    <label>秒</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="festivals-grid">
+            <button class="festival-btn" data-festival="春节">春节</button>
+            <button class="festival-btn" data-festival="元宵节">元宵节</button>
+            <button class="festival-btn" data-festival="清明节">清明节</button>
+            <button class="festival-btn" data-festival="端午节">端午节</button>
+            <button class="festival-btn" data-festival="中秋节">中秋节</button>
+            <button class="festival-btn" data-festival="国庆节">国庆节</button>
+            <button class="festival-btn" data-festival="重阳节">重阳节</button>
+            <button class="festival-btn" data-festival="元旦">元旦</button>
+        </div>
+
+        <div class="custom-countdown">
+            <h3>自定义倒计时</h3>
+            <div class="custom-input">
+                <input type="text" id="customEventName" placeholder="事件名称">
+                <input type="datetime-local" id="customDateTime">
+                <button id="startCustomBtn">开始倒计时</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
