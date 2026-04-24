@@ -1,61 +1,57 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小乐开发</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>iOS 风天气</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>节日倒计时</h1>
-            <div id="currentTime"></div>
-        </header>
-
-        <div class="countdown-display">
-            <h2 id="eventName">选择一个节日</h2>
-            <div class="countdown-timer">
-                <div class="time-block">
-                    <span id="days">00</span>
-                    <label>天</label>
-                </div>
-                <div class="time-block">
-                    <span id="hours">00</span>
-                    <label>时</label>
-                </div>
-                <div class="time-block">
-                    <span id="minutes">00</span>
-                    <label>分</label>
-                </div>
-                <div class="time-block">
-                    <span id="seconds">00</span>
-                    <label>秒</label>
-                </div>
-            </div>
+  <main class="app-shell">
+    <section class="weather-card" aria-live="polite">
+      <header class="card-header">
+        <div>
+          <p class="muted">当前位置天气</p>
+          <h1 id="locationName">定位中...</h1>
         </div>
+        <button id="refreshBtn" class="icon-btn" type="button" aria-label="刷新天气">↻</button>
+      </header>
 
-        <div class="festivals-grid">
-            <button class="festival-btn" data-festival="春节">春节</button>
-            <button class="festival-btn" data-festival="元宵节">元宵节</button>
-            <button class="festival-btn" data-festival="清明节">清明节</button>
-            <button class="festival-btn" data-festival="端午节">端午节</button>
-            <button class="festival-btn" data-festival="中秋节">中秋节</button>
-            <button class="festival-btn" data-festival="国庆节">国庆节</button>
-            <button class="festival-btn" data-festival="重阳节">重阳节</button>
-            <button class="festival-btn" data-festival="元旦">元旦</button>
+      <div class="current-weather">
+        <div>
+          <p id="weatherEmoji" class="weather-emoji">☀️</p>
+          <p id="weatherText" class="weather-text">正在获取天气...</p>
         </div>
+        <p><span id="currentTemp">--</span><span class="unit">°C</span></p>
+      </div>
 
-        <div class="custom-countdown">
-            <h3>自定义倒计时</h3>
-            <div class="custom-input">
-                <input type="text" id="customEventName" placeholder="事件名称">
-                <input type="datetime-local" id="customDateTime">
-                <button id="startCustomBtn">开始倒计时</button>
-            </div>
-        </div>
-    </div>
-    <script src="script.js"></script>
+      <div class="meta-grid">
+        <article class="meta-item">
+          <p class="muted">体感温度</p>
+          <p id="apparentTemp">--°C</p>
+        </article>
+        <article class="meta-item">
+          <p class="muted">风速</p>
+          <p id="windSpeed">-- km/h</p>
+        </article>
+        <article class="meta-item">
+          <p class="muted">湿度</p>
+          <p id="humidity">--%</p>
+        </article>
+        <article class="meta-item">
+          <p class="muted">降水概率</p>
+          <p id="rainChance">--%</p>
+        </article>
+      </div>
+
+      <section>
+        <h2>未来 5 天</h2>
+        <ul id="forecastList" class="forecast-list"></ul>
+      </section>
+
+      <p id="status" class="status">请允许定位权限以自动获取你所在城市的天气。</p>
+    </section>
+  </main>
+  <script src="script.js"></script>
 </body>
-</html> 
+</html>
