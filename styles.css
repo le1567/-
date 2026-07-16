@@ -486,6 +486,7 @@ body {
 .interp-card {
   border-left: 3px solid var(--accent);
   padding-left: 16px;
+  padding-top: 4px;
 }
 .interp-card h4 {
   font-family: 'ZCOOL XiaoWei', serif;
@@ -495,6 +496,96 @@ body {
 .interp-card p {
   color: var(--ink-soft); font-size: 0.95rem; line-height: 1.8;
 }
+
+/* ---- 卦象综合区域（互/变/错/综）---- */
+.hex-family-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.hex-family-card {
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  background: var(--bg-soft);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.hex-family-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.hex-family-card.mutual-card { border-left-color: var(--gold); }
+.hex-family-card.changed-card { border-left-color: var(--accent); }
+.hex-family-card.opposite-card { border-left-color: var(--jade); }
+.hex-family-card.reverse-card { border-left-color: var(--gold-deep); }
+.hex-family-card h4 {
+  font-family: 'ZCOOL XiaoWei', serif;
+  font-size: 1rem; color: var(--accent);
+  letter-spacing: 0.15em; margin-bottom: 6px;
+}
+.mutual-card h4 { color: var(--gold); }
+.opposite-card h4 { color: var(--jade); }
+.reverse-card h4 { color: var(--gold-deep); }
+.hex-family-card p {
+  font-size: 0.88rem; line-height: 1.7; color: var(--ink-soft);
+  margin-top: 4px;
+}
+.hex-family-card p em {
+  font-style: normal; color: var(--ink);
+  font-weight: 500;
+}
+
+/* ---- 现代通俗解读 ---- */
+.modern-section {
+  background: linear-gradient(135deg, var(--bg-soft) 0%, var(--paper) 100%);
+  border-left: 3px solid var(--accent) !important;
+  padding: 20px 24px !important;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.modern-section::before {
+  content: '俗 解';
+  position: absolute;
+  top: 12px; right: 18px;
+  font-family: 'Ma Shan Zheng', serif;
+  font-size: 1.6rem;
+  color: var(--accent);
+  opacity: 0.12;
+  letter-spacing: 0.2em;
+  pointer-events: none;
+}
+.modern-section h4 { color: var(--accent) !important; }
+.modern-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-top: 12px;
+}
+.modern-item {
+  background: var(--paper);
+  border: 1px dashed var(--line-soft);
+  padding: 12px 16px;
+  border-radius: 2px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.modern-item p {
+  flex: 1; font-size: 0.92rem; line-height: 1.75;
+  color: var(--ink-soft);
+}
+.m-tag {
+  display: inline-block;
+  flex-shrink: 0;
+  font-family: 'ZCOOL XiaoWei', serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  padding: 4px 10px;
+  border-radius: 2px;
+  color: var(--paper);
+  min-width: 50px;
+  text-align: center;
+}
+.tag-general { background: var(--accent); }
+.tag-career { background: var(--jade); }
+.tag-love { background: #B85A8E; }
+.tag-decision { background: var(--gold-deep); }
+
 .yao-list { list-style: none; }
 .yao-list li {
   padding: 8px 0;
@@ -518,6 +609,108 @@ body {
   font-style: italic; padding: 24px 0;
   grid-column: 1 / -1;
 }
+
+/* ---- 64 卦分卷 ---- */
+.jing-section {
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px dashed var(--line-soft);
+}
+.jing-section:last-child { border-bottom: none; }
+.jing-title {
+  font-family: 'Ma Shan Zheng', serif;
+  font-size: 1.6rem;
+  color: var(--ink);
+  letter-spacing: 0.25em;
+  padding-left: 0.25em;
+  margin-bottom: 18px;
+  position: relative;
+  display: inline-block;
+  padding-right: 24px;
+  padding-left: 12px;
+}
+.jing-title::before {
+  content: '';
+  position: absolute; left: 0; top: 8px; bottom: 8px;
+  width: 4px; background: var(--accent);
+}
+.jing-sub {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-weight: normal;
+  letter-spacing: 0.1em;
+  margin-left: 12px;
+}
+.hex-cells {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 12px;
+}
+.hex-cell-meta {
+  font-size: 0.7em;
+  color: var(--ink-soft);
+  opacity: 0.7;
+  letter-spacing: 0.1em;
+  margin-top: -2px;
+}
+
+/* ---- 弹层内卦象关系卡 ---- */
+.related-grid {
+  display: grid; grid-template-columns: 1fr; gap: 12px;
+  margin-top: 12px;
+}
+.related-card {
+  display: block;
+  text-decoration: none;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.related-card:hover {
+  background: var(--paper);
+  border-color: var(--accent);
+  transform: translateX(4px);
+  box-shadow: var(--shadow);
+}
+.related-label {
+  font-family: 'ZCOOL XiaoWei', serif;
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 4px;
+}
+.related-name {
+  font-family: 'Ma Shan Zheng', serif;
+  font-size: 1.2rem;
+  color: var(--ink);
+  letter-spacing: 0.15em;
+  margin-bottom: 6px;
+}
+.related-id {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  font-weight: normal;
+  margin-left: 8px;
+  opacity: 0.7;
+}
+.related-hex {
+  display: flex; justify-content: center;
+  margin: 6px 0;
+}
+.related-desc {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+  text-align: center;
+  font-style: italic;
+}
+.modern-modal h4 { color: var(--accent); }
 
 /* ---- 历史记录 ---- */
 .history-panel {
@@ -555,12 +748,7 @@ body {
   box-shadow: var(--paper-shadow);
   border-radius: 2px;
 }
-.hex-grid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 12px;
-  max-width: 100%;
-}
+.hex-grid { display: block; }
 .hex-cell {
   aspect-ratio: 1 / 1.2;
   background: var(--bg-soft);
@@ -845,7 +1033,9 @@ input:checked + .slider::before { transform: translateX(24px); }
 /* ---- 响应式 ---- */
 @media (max-width: 1024px) {
   .interp-grid { grid-template-columns: 1fr; }
-  .hex-grid { grid-template-columns: repeat(8, 1fr); }
+  .hex-cells { grid-template-columns: repeat(8, 1fr); }
+  .literature-row { grid-template-columns: 1fr !important; }
+  .modern-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
   .scroll-rod { margin: 0 4%; }
@@ -857,16 +1047,22 @@ input:checked + .slider::before { transform: translateX(24px); }
   .hexagram-display { padding: 24px 16px; gap: 16px; }
   .hex-row { padding: 12px 16px; }
   .yao { width: 80px; }
-  .hex-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .hex-cells { grid-template-columns: repeat(4, 1fr); gap: 8px; }
   .mini-yao { width: 24px; }
   .interp-grid { grid-template-columns: 1fr; gap: 20px; }
   .prayer-panel { padding: 32px 20px; }
   .prayer-panel .seal-stamp { width: 44px; height: 44px; line-height: 44px; font-size: 1.4rem; }
   .modal-card { padding: 36px 24px; }
   .method-list { grid-template-columns: 1fr; }
+  .hex-family-row { grid-template-columns: 1fr; }
+  .hex-family-card { padding: 10px 12px; }
+  .modern-grid { grid-template-columns: 1fr; gap: 10px; }
+  .modern-item { padding: 10px 12px; }
+  .modern-item p { font-size: 0.85rem; }
+  .jing-title { font-size: 1.3rem; }
 }
 @media (max-width: 480px) {
-  .hex-grid { grid-template-columns: repeat(4, 1fr); }
+  .hex-cells { grid-template-columns: repeat(4, 1fr); }
   .site-title { font-size: 3rem; }
   .panel-title { font-size: 1.4rem; }
 }
