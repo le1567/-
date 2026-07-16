@@ -30,7 +30,11 @@ function navigate() {
     n.classList.toggle('active', n.dataset.route === r.name);
   });
   if (r.name === 'hexagrams') renderHexGrid();
-  if (r.name === 'hexagrams' && r.hexId) showHexModal(r.hexId);
+  if (r.name === 'hexagrams' && r.hexId) {
+    showHexModal(r.hexId);
+  } else {
+    hideModal();
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 window.addEventListener('hashchange', navigate);

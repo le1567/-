@@ -665,7 +665,7 @@ export const HEXAGRAMS = [
     ]
   },
   {
-    id: 48, name: '井', symbol: '110100',
+    id: 48, name: '井', symbol: '011010',
     guaCi: '改邑不改井，无丧无得，往来井井。汔至，亦未繘井，羸其瓶，凶。',
     tuanZhuan: '井：巽乎水而上水，井。井养而不穷也。改邑不改井，乃以刚中也。汔至亦未繘井，未有功也。羸其瓶，是以凶也。',
     xiangZhuan: '木上有水，井，君子以劳民劝相。',
@@ -693,7 +693,7 @@ export const HEXAGRAMS = [
     ]
   },
   {
-    id: 50, name: '鼎', symbol: '110011',
+    id: 50, name: '鼎', symbol: '011101',
     guaCi: '元吉，亨。',
     tuanZhuan: '鼎：刚柔交错，以成大文，刚柔分而刚得中。以木巽火，亨饪，养圣贤而足大人，故元吉亨也。',
     xiangZhuan: '木上有火，鼎，君子以正位凝命。',
@@ -707,7 +707,7 @@ export const HEXAGRAMS = [
     ]
   },
   {
-    id: 51, name: '震', symbol: '001001',
+    id: 51, name: '震', symbol: '100100',
     guaCi: '亨。震来虩虩，笑言哑哑。震惊百里，不丧匕鬯。',
     tuanZhuan: '震：亨。震来虩虩，恐致福也。笑言哑哑，后有则也。震惊百里，惊远而惧迩也。出可以守宗庙社稷，以为祭主也。',
     xiangZhuan: '洊雷，震，君子以恐惧修省。',
@@ -721,7 +721,7 @@ export const HEXAGRAMS = [
     ]
   },
   {
-    id: 52, name: '艮', symbol: '011011',
+    id: 52, name: '艮', symbol: '001001',
     guaCi: '艮其背，不获其身，行其庭，不见其人，无咎。',
     tuanZhuan: '艮：止也。时止则止，时行则行，动静不失其时，其道光明。艮其止，止其所也。上下敌应，不相与也。是以不获其身，行其庭，不见其人，无咎也。',
     xiangZhuan: '兼山，艮，君子以思不出其位。',
@@ -749,7 +749,7 @@ export const HEXAGRAMS = [
     ]
   },
   {
-    id: 54, name: '归妹', symbol: '110101',
+    id: 54, name: '归妹', symbol: '110100',
     guaCi: '征凶，无攸利。',
     tuanZhuan: '归妹：天地之大义也。天地不交，而万物不兴。归妹，人之终始也。说以动，所归妹也。征凶，位不当也。无攸利，柔乘刚也。',
     xiangZhuan: '泽上有雷，归妹，君子以永终知敝。',
@@ -763,7 +763,7 @@ export const HEXAGRAMS = [
     ]
   },
   {
-    id: 55, name: '丰', symbol: '101101',
+    id: 55, name: '丰', symbol: '101100',
     guaCi: '亨。王假之，勿忧，宜日中。',
     tuanZhuan: '丰：大也。明以动，故丰。王假之，尚大也。勿忧宜日中，宜照天下也。日中则昃，月盈则食，天地盈虚，与时消息，而况于人乎，况于鬼神乎。',
     xiangZhuan: '雷电皆至，丰，君子以折狱致刑。',
@@ -777,7 +777,7 @@ export const HEXAGRAMS = [
     ]
   },
   {
-    id: 56, name: '旅', symbol: '101011',
+    id: 56, name: '旅', symbol: '001101',
     guaCi: '小亨，旅贞吉。',
     tuanZhuan: '旅：小亨，柔得中乎外，而顺乎刚，止而丽乎明，是以小亨旅贞吉也。旅之时义大矣哉。',
     xiangZhuan: '山上有火，旅，君子以明慎用刑，而不留狱。',
@@ -791,7 +791,7 @@ export const HEXAGRAMS = [
     ]
   },
   {
-    id: 57, name: '巽', symbol: '011100',
+    id: 57, name: '巽', symbol: '011011',
     guaCi: '小亨，利有攸往，利见大人。',
     tuanZhuan: '巽：小亨，利有攸往，利见大人。柔皆顺乎刚，是以小亨，利有攸往，利见大人。',
     xiangZhuan: '随风，巽，君子以申命行事。',
