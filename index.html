@@ -1,61 +1,239 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小乐开发</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>周易 · 一念问天 | 铜钱起卦</title>
+  <meta name="description" content="水墨国风周易起卦网页：三枚铜钱自动起卦、解卦、64 卦全库。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;700;900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23C9A96E' stroke='%231A1612' stroke-width='3'/><rect x='40' y='40' width='20' height='20' fill='%231A1612'/><text x='50' y='105' text-anchor='middle' font-family='serif' font-size='24' fill='%23A93226' font-weight='bold'>易</text></svg>">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>节日倒计时</h1>
-            <div id="currentTime"></div>
-        </header>
+  <!-- 卷轴背景层 -->
+  <div class="ink-bg" aria-hidden="true"></div>
+  <div class="paper-grain" aria-hidden="true"></div>
 
-        <div class="countdown-display">
-            <h2 id="eventName">选择一个节日</h2>
-            <div class="countdown-timer">
-                <div class="time-block">
-                    <span id="days">00</span>
-                    <label>天</label>
-                </div>
-                <div class="time-block">
-                    <span id="hours">00</span>
-                    <label>时</label>
-                </div>
-                <div class="time-block">
-                    <span id="minutes">00</span>
-                    <label>分</label>
-                </div>
-                <div class="time-block">
-                    <span id="seconds">00</span>
-                    <label>秒</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="festivals-grid">
-            <button class="festival-btn" data-festival="春节">春节</button>
-            <button class="festival-btn" data-festival="元宵节">元宵节</button>
-            <button class="festival-btn" data-festival="清明节">清明节</button>
-            <button class="festival-btn" data-festival="端午节">端午节</button>
-            <button class="festival-btn" data-festival="中秋节">中秋节</button>
-            <button class="festival-btn" data-festival="国庆节">国庆节</button>
-            <button class="festival-btn" data-festival="重阳节">重阳节</button>
-            <button class="festival-btn" data-festival="元旦">元旦</button>
-        </div>
-
-        <div class="custom-countdown">
-            <h3>自定义倒计时</h3>
-            <div class="custom-input">
-                <input type="text" id="customEventName" placeholder="事件名称">
-                <input type="datetime-local" id="customDateTime">
-                <button id="startCustomBtn">开始倒计时</button>
-            </div>
-        </div>
+  <!-- 顶部卷轴 -->
+  <header class="scroll-header">
+    <div class="scroll-rod scroll-rod-top"></div>
+    <div class="scroll-title-wrap">
+      <h1 class="site-title" data-anim="title">周<span class="dot">·</span>易</h1>
+      <p class="site-subtitle" data-anim="subtitle">一念问天 · 铜钱起卦</p>
     </div>
-    <script src="script.js"></script>
+    <div class="scroll-rod scroll-rod-bottom"></div>
+  </header>
+
+  <!-- 导航 -->
+  <nav class="nav-bar" role="navigation">
+    <a href="#/home" class="nav-link" data-route="home">起 卦</a>
+    <a href="#/hexagrams" class="nav-link" data-route="hexagrams">六十四卦</a>
+    <a href="#/culture" class="nav-link" data-route="culture">易 源</a>
+    <a href="#/settings" class="nav-link" data-route="settings">设 置</a>
+  </nav>
+
+  <!-- 主容器 -->
+  <main class="container" id="app">
+    <!-- 起卦页 -->
+    <section class="view" id="view-home" data-view="home">
+
+      <!-- 祈念区 -->
+      <div class="prayer-panel" data-anim="fade-up">
+        <div class="seal-stamp" aria-hidden="true">易</div>
+        <h2 class="panel-title">默 念</h2>
+        <p class="panel-text">
+          净手焚香，心诚意正；<br>
+          静思所问之事，<br>
+          默念毕，请点击下方掷出铜钱。
+        </p>
+      </div>
+
+      <!-- 铜钱区 -->
+      <div class="coin-area" data-anim="fade-up" data-delay="100">
+        <div class="coin-stage">
+          <div class="coin" id="coin-1" data-face="字">
+            <div class="coin-inner"><span class="coin-char">字</span></div>
+            <div class="coin-back"><span class="coin-char">背</span></div>
+          </div>
+          <div class="coin" id="coin-2" data-face="字">
+            <div class="coin-inner"><span class="coin-char">字</span></div>
+            <div class="coin-back"><span class="coin-char">背</span></div>
+          </div>
+          <div class="coin" id="coin-3" data-face="字">
+            <div class="coin-inner"><span class="coin-char">字</span></div>
+            <div class="coin-back"><span class="coin-char">背</span></div>
+          </div>
+        </div>
+        <div class="coin-progress">
+          <span class="progress-label">第 <em id="current-yao">1</em> 爻 / 共 6 爻</span>
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        </div>
+        <div class="coin-actions">
+          <button class="btn btn-primary" id="btn-toss">掷 铜 钱</button>
+          <button class="btn btn-ghost" id="btn-reset" hidden>重 起</button>
+        </div>
+        <p class="coin-hint" id="coin-hint">三枚铜钱，正在候命</p>
+      </div>
+
+      <!-- 卦象区 -->
+      <div class="hexagram-display" id="hex-display" data-anim="fade-up" data-delay="200">
+        <div class="hex-side">
+          <h3 class="hex-title">本 卦</h3>
+          <div class="hex-row" id="hex-main">
+            <div class="yao yao-yang" data-pos="6"></div>
+            <div class="yao yao-yang" data-pos="5"></div>
+            <div class="yao yao-yang" data-pos="4"></div>
+            <div class="yao yao-yang" data-pos="3"></div>
+            <div class="yao yao-yang" data-pos="2"></div>
+            <div class="yao yao-yang" data-pos="1"></div>
+          </div>
+          <div class="hex-name" id="hex-name-main">—</div>
+        </div>
+        <div class="hex-arrow" id="hex-arrow" hidden>→</div>
+        <div class="hex-side" id="hex-changed-wrap" hidden>
+          <h3 class="hex-title">变 卦</h3>
+          <div class="hex-row" id="hex-changed">
+            <div class="yao yao-yang" data-pos="6"></div>
+            <div class="yao yao-yang" data-pos="5"></div>
+            <div class="yao yao-yang" data-pos="4"></div>
+            <div class="yao yao-yang" data-pos="3"></div>
+            <div class="yao yao-yang" data-pos="2"></div>
+            <div class="yao yao-yang" data-pos="1"></div>
+          </div>
+          <div class="hex-name" id="hex-name-changed">—</div>
+        </div>
+      </div>
+
+      <!-- 解卦面板 -->
+      <div class="interpretation-panel" id="interp-panel" data-anim="fade-up" data-delay="300">
+        <h2 class="panel-title">解 卦</h2>
+        <div class="interp-grid" id="interp-grid">
+          <p class="placeholder-text">尚未起卦。请点击「掷铜钱」开始。</p>
+        </div>
+      </div>
+
+      <!-- 历史记录 -->
+      <div class="history-panel" data-anim="fade-up" data-delay="400">
+        <h3 class="panel-title-sm">近 期 问 卦</h3>
+        <ul class="history-list" id="history-list">
+          <li class="placeholder-text">尚无记录</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 64 卦浏览页 -->
+    <section class="view" id="view-hexagrams" data-view="hexagrams" hidden>
+      <div class="hex-page">
+        <h2 class="page-title">六 十 四 卦</h2>
+        <p class="page-desc">点击卦象查看卦辞、爻辞与象传</p>
+        <div class="hex-grid" id="hex-grid"></div>
+      </div>
+    </section>
+
+    <!-- 卦详情弹层 -->
+    <div class="modal-mask" id="hex-modal" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true">
+        <button class="modal-close" id="modal-close" aria-label="关闭">×</button>
+        <div class="modal-body" id="modal-body"></div>
+      </div>
+    </div>
+
+    <!-- 文化区 -->
+    <section class="view" id="view-culture" data-view="culture" hidden>
+      <div class="culture-page">
+        <h2 class="page-title">易 之 源</h2>
+
+        <div class="culture-block">
+          <div class="culture-img-wrap">
+            <img src="./assets/taiji.svg" alt="太极八卦图" class="taiji-img" id="taiji-img">
+          </div>
+          <div class="culture-text">
+            <h3 class="panel-title-sm">太 极 生 两 仪</h3>
+            <p>《易·系辞上》：「易有太极，是生两仪，两仪生四象，四象生八卦。」</p>
+            <p>无极而太极。太极动而生阳，静而生阴。阴阳交合，化生万物。</p>
+            <p>八卦者，乾☰兑☱离☲震☳巽☴坎☵艮☶，象征天泽火雷风水山八种自然之力。</p>
+          </div>
+        </div>
+
+        <div class="culture-block">
+          <h3 class="panel-title-sm">六 爻 起 卦 法</h3>
+          <p>取三枚铜钱，合于掌中，默念所问，摇掷落下：</p>
+          <ul class="method-list">
+            <li><span class="m-key">三背</span><span class="m-arrow">→</span><span class="m-val">老阴 6（动爻）</span></li>
+            <li><span class="m-key">二背一字</span><span class="m-arrow">→</span><span class="m-val">少阳 7</span></li>
+            <li><span class="m-key">一背二字</span><span class="m-arrow">→</span><span class="m-val">少阴 8</span></li>
+            <li><span class="m-key">三字</span><span class="m-arrow">→</span><span class="m-val">老阳 9（动爻）</span></li>
+          </ul>
+          <p>自下而上共掷六次，累积成卦。老阴老阳为动爻，阴变阳、阳变阴，得出"之卦"（变卦）。</p>
+        </div>
+
+        <div class="culture-block">
+          <h3 class="panel-title-sm">象 数 与 义 理</h3>
+          <p>《易经》以卦象为骨，以数行为脉，以辞为肉。三者合一，方见其神。</p>
+          <p>其理广大，无所不包：仰以观于天文，俯以察于地理，近取诸身，远取诸物。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 设置页 -->
+    <section class="view" id="view-settings" data-view="settings" hidden>
+      <div class="settings-page">
+        <h2 class="page-title">设 置</h2>
+
+        <div class="setting-card">
+          <div class="setting-row">
+            <div>
+              <h3 class="setting-title">主 题</h3>
+              <p class="setting-desc">宣纸（米白）· 玄夜（墨黑）</p>
+            </div>
+            <div class="theme-switch" role="tablist">
+              <button class="theme-btn" data-theme="light" aria-label="宣纸主题">宣</button>
+              <button class="theme-btn" data-theme="dark" aria-label="玄夜主题">玄</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-card">
+          <div class="setting-row">
+            <div>
+              <h3 class="setting-title">铜 钱 落 盘 声</h3>
+              <p class="setting-desc">起卦时是否发出铜钱落地之声</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="sound-toggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-card">
+          <div class="setting-row">
+            <div>
+              <h3 class="setting-title">清 除 历 史</h3>
+              <p class="setting-desc">清除本机存储的问卦记录</p>
+            </div>
+            <button class="btn btn-ghost" id="btn-clear-history">清 除</button>
+          </div>
+        </div>
+
+        <div class="setting-card about-card">
+          <h3 class="setting-title">关 于</h3>
+          <p class="setting-desc">周易 · 一念问天 v1.0</p>
+          <p class="setting-desc">水墨国风 · 纯静态网页 · GitHub Pages 部署</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="site-footer">
+    <div class="footer-line"></div>
+    <p>仰以观于天文 · 俯以察于地理</p>
+    <p class="footer-sub">© <span id="year"></span> Zhou Yi · Crafted with reverence</p>
+  </footer>
+
+  <script type="module" src="./script.js"></script>
 </body>
-</html> 
+</html>

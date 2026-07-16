@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <radialGradient id="taijiBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F1E6CF"/>
+      <stop offset="80%" stop-color="#E8D5A8"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </radialGradient>
+  </defs>
+  <!-- 圆盘 -->
+  <circle cx="200" cy="200" r="190" fill="url(#taijiBg)" stroke="#1A1612" stroke-width="4"/>
+  <circle cx="200" cy="200" r="180" fill="none" stroke="#A93226" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <!-- 阳鱼（白） -->
+  <path d="M 200 50 A 75 75 0 0 1 200 200 A 75 75 0 0 1 200 350 A 150 150 0 0 0 200 50 Z" fill="#F1E6CF" stroke="#1A1612" stroke-width="2"/>
+  <!-- 阴鱼（黑） -->
+  <path d="M 200 50 A 75 75 0 0 0 200 200 A 75 75 0 0 0 200 350 A 150 150 0 0 1 200 50 Z" fill="#1A1612" stroke="#1A1612" stroke-width="2"/>
+  <!-- 阳眼（黑点） -->
+  <circle cx="200" cy="125" r="15" fill="#1A1612"/>
+  <!-- 阴眼（白点） -->
+  <circle cx="200" cy="275" r="15" fill="#F1E6CF" stroke="#1A1612" stroke-width="1"/>
+  <!-- 八个方位卦象 -->
+  <g font-family="serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#A93226">
+    <text x="200" y="40">☴ 巽</text>
+    <text x="335" y="115">☱ 兑</text>
+    <text x="335" y="295">☲ 离</text>
+    <text x="200" y="370">☷ 坤</text>
+    <text x="65" y="295">☳ 震</text>
+    <text x="65" y="115">☵ 坎</text>
+  </g>
+  <g font-family="serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#1A1612">
+    <text x="200" y="80">☰ 乾</text>
+    <text x="340" y="210">☶ 艮</text>
+  </g>
+</svg>

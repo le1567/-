@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="coinGrad" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#E8C66E"/>
+      <stop offset="40%" stop-color="#C9A96E"/>
+      <stop offset="80%" stop-color="#8B6F2E"/>
+      <stop offset="100%" stop-color="#5C4716"/>
+    </radialGradient>
+    <radialGradient id="coinGradBack" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#D4AF6A"/>
+      <stop offset="50%" stop-color="#A07A35"/>
+      <stop offset="100%" stop-color="#4A3411"/>
+    </radialGradient>
+  </defs>
+  <!-- 外圆 -->
+  <circle cx="100" cy="100" r="95" fill="url(#coinGrad)" stroke="#3D2A0F" stroke-width="3"/>
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#5C4716" stroke-width="1.5"/>
+  <!-- 方孔 -->
+  <rect x="82" y="82" width="36" height="36" fill="#1A1612" stroke="#3D2A0F" stroke-width="2" rx="2"/>
+  <!-- 文字（字） -->
+  <text x="40" y="60" text-anchor="middle" font-family="serif" font-size="40" fill="#3D2A0F" font-weight="bold">乾</text>
+  <text x="160" y="60" text-anchor="middle" font-family="serif" font-size="40" fill="#3D2A0F" font-weight="bold">坤</text>
+  <text x="40" y="160" text-anchor="middle" font-family="serif" font-size="40" fill="#3D2A0F" font-weight="bold">震</text>
+  <text x="160" y="160" text-anchor="middle" font-family="serif" font-size="40" fill="#3D2A0F" font-weight="bold">巽</text>
+  <!-- 装饰小圆点 -->
+  <circle cx="100" cy="20" r="3" fill="#3D2A0F"/>
+  <circle cx="100" cy="180" r="3" fill="#3D2A0F"/>
+  <circle cx="20" cy="100" r="3" fill="#3D2A0F"/>
+  <circle cx="180" cy="100" r="3" fill="#3D2A0F"/>
+</svg>
