@@ -2,238 +2,577 @@
 <html lang="zh-CN" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>周易 · 一念问天 | 铜钱起卦</title>
-  <meta name="description" content="水墨国风周易起卦网页：三枚铜钱自动起卦、解卦、64 卦全库。">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>元宝搜索 · 会思考的 AI 搜索</title>
+  <meta name="description" content="元宝搜索，一款会读网页、会给答案的 AI 搜索应用。输入问题，元宝帮你把全网资料揉成一句人话。">
+  <meta name="theme-color" content="#FFF9EF">
+  <meta name="color-scheme" content="light dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="元宝搜索">
+  <meta property="og:title" content="元宝搜索 · 会思考的 AI 搜索">
+  <meta property="og:description" content="搜得到，也讲得清。全网资料，一句话讲清。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./assets/icon-512.png">
+  <link rel="manifest" href="./manifest.webmanifest" crossorigin="use-credentials">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="./assets/favicon-64.png">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;700;900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23C9A96E' stroke='%231A1612' stroke-width='3'/><rect x='40' y='40' width='20' height='20' fill='%231A1612'/><text x='50' y='105' text-anchor='middle' font-family='serif' font-size='24' fill='%23A93226' font-weight='bold'>易</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=11">
 </head>
 <body>
-  <!-- 卷轴背景层 -->
-  <div class="ink-bg" aria-hidden="true"></div>
-  <div class="paper-grain" aria-hidden="true"></div>
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5l1.9 5.6L19.5 11l-5.6 1.9L12 18.5l-1.9-5.6L4.5 11l5.6-1.9L12 3.5Z"/><path d="M19 16l.8 2.2 2.2.8-2.2.8L19 22l-.8-2.2-2.2-.8 2.2-.8L19 16Z"/></symbol>
+    <symbol id="i-spark-fill" viewBox="0 0 24 24"><path d="M12 2.6l2.2 6.4 6.4 2.2-6.4 2.2L12 19.8 9.8 13.4 3.4 11.2l6.4-2.2L12 2.6Z" fill="currentColor" stroke="none"/><path d="M19 15.5l.9 2.4 2.4.9-2.4.9L19 22.1l-.9-2.4-2.4-.9 2.4-.9.9-2.4Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3M9 21h6"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M4 17.2l4.6-4.6 3.1 3.1 2.8-2.8 5.5 5.5"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.6-2h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.2"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-history" viewBox="0 0 24 24"><path d="M3.8 12a8.2 8.2 0 1 0 2.5-5.9"/><path d="M3.5 4.5V10H9"/><path d="M12 8v4.5l3 2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 1.8"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2Z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.5 4-5.2 7-5.2s5.8 1.7 7 5.2"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M6 7l1 13h10l1-13M10 11v5M14 11v5"/></symbol>
+    <symbol id="i-install" viewBox="0 0 24 24"><path d="M12 3v11M7.5 10.5L12 15l4.5-4.5"/><path d="M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M15 5.5H6.5A2.5 2.5 0 0 0 4 8v8.5"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.4 5.7"/><path d="M20 4.5V11h-6.5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c.8 3.6-2.8 5-2.8 8.6a2.8 2.8 0 0 0 5.6 0c0-.6-.1-1.1-.3-1.6 1.7 1.3 2.7 3.2 2.7 5.3a5.2 5.2 0 0 1-10.4 0C7.8 10.8 11.2 8 12 3Z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 7.5-7 9-4-1.5-7-4-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></symbol>
+    <symbol id="i-dice" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="8.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="8.5" cy="15.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5Z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.5 3.5 5.5 3.5 8.5s-1 6-3.5 8.5c-2.5-2.5-3.5-5.5-3.5-8.5s1-6 3.5-8.5Z"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9.5 6C6.5 7 5 9.2 5 12.5V18h5v-6H7.6c0-2.2.8-3.6 2.6-4.4L9.5 6ZM19 6c-3 1-4.5 3.2-4.5 6.5V18h5v-6h-2.4c0-2.2.8-3.6 2.6-4.4L19 6Z" fill="currentColor" stroke="none"/></symbol>
+  </svg>
 
-  <!-- 顶部卷轴 -->
-  <header class="scroll-header">
-    <div class="scroll-rod scroll-rod-top"></div>
-    <div class="scroll-title-wrap">
-      <h1 class="site-title" data-anim="title">周<span class="dot">·</span>易</h1>
-      <p class="site-subtitle" data-anim="subtitle">一念问天 · 铜钱起卦</p>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- 启动页 -->
+  <div class="splash" id="splash">
+    <div class="splash-inner">
+      <div class="splash-glow"></div>
+      <img class="splash-mark" src="./assets/app-icon.png" alt="元宝搜索">
+      <p class="splash-title">元宝搜索</p>
+      <p class="splash-sub">正在唤醒元宝</p>
+      <div class="splash-bar"><span></span></div>
     </div>
-    <div class="scroll-rod scroll-rod-bottom"></div>
-  </header>
+  </div>
 
-  <!-- 导航 -->
-  <nav class="nav-bar" role="navigation">
-    <a href="#/home" class="nav-link" data-route="home">起 卦</a>
-    <a href="#/hexagrams" class="nav-link" data-route="hexagrams">六十四卦</a>
-    <a href="#/culture" class="nav-link" data-route="culture">易 源</a>
-    <a href="#/settings" class="nav-link" data-route="settings">设 置</a>
-  </nav>
+  <div class="top-progress" id="progress-bar" aria-hidden="true"></div>
 
-  <!-- 主容器 -->
-  <main class="container" id="app">
-    <!-- 起卦页 -->
-    <section class="view" id="view-home" data-view="home">
-
-      <!-- 祈念区 -->
-      <div class="prayer-panel" data-anim="fade-up">
-        <div class="seal-stamp" aria-hidden="true">易</div>
-        <h2 class="panel-title">默 念</h2>
-        <p class="panel-text">
-          净手焚香，心诚意正；<br>
-          静思所问之事，<br>
-          默念毕，请点击下方掷出铜钱。
-        </p>
+  <div class="app" id="app">
+    <header class="topbar" id="topbar">
+      <a class="brand" href="#/home" aria-label="元宝搜索首页">
+        <img class="brand-mark" src="./assets/app-icon.png" alt="">
+        <span class="brand-text">元宝搜索</span>
+        <span class="brand-ai">AI</span>
+      </a>
+      <nav class="top-nav" aria-label="主导航">
+        <a href="#/home" data-nav="home">首页</a>
+        <a href="#/discover" data-nav="discover">发现</a>
+        <a href="#/history" data-nav="history">历史</a>
+        <a href="#/settings" data-nav="settings">我的</a>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-btn theme-btn" id="theme-toggle" type="button" aria-label="切换深浅色">
+          <svg class="ico sun-ico"><use href="#i-sun"/></svg>
+          <svg class="ico moon-ico"><use href="#i-moon"/></svg>
+        </button>
+        <a class="avatar-btn" href="#/settings" aria-label="我的">
+          <img src="./assets/avatar.webp" alt="">
+        </a>
       </div>
+    </header>
 
-      <!-- 铜钱区 -->
-      <div class="coin-area" data-anim="fade-up" data-delay="100">
-        <div class="coin-stage">
-          <div class="coin" id="coin-1" data-face="字">
-            <div class="coin-inner"><span class="coin-char">字</span></div>
-            <div class="coin-back"><span class="coin-char">背</span></div>
+    <main id="views">
+      <!-- 首页 -->
+      <section class="view" id="view-home" data-view="home">
+        <div class="page-wrap">
+          <section class="hero">
+            <div class="hero-copy">
+              <div class="hero-mobile-mark" aria-hidden="true">
+                <img src="./assets/app-icon.png" alt="">
+              </div>
+              <p class="eyebrow"><span class="pulse-dot"></span>元宝 AI 搜索<span class="eyebrow-sep">·</span><span class="eyebrow-dim">全网资料，一句话讲清</span></p>
+              <h1 class="hero-title">有问题，<br><span class="grad-text">问元宝。<svg class="title-underline" viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10.5C46 4.5 102 3.5 217 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span></h1>
+              <p class="hero-sub">搜得到，也讲得清。元宝会把全网资料读完，<br class="only-desktop">再用一句人话讲给你听。</p>
+
+              <div class="search-wrap">
+                <form class="searchbox hero-search search-form" id="hero-search" role="search" autocomplete="off">
+                  <svg class="ico search-ico"><use href="#i-search"/></svg>
+                  <input id="hero-input" class="search-input" type="search" placeholder="输入关键词或问题，让元宝帮你找答案" aria-label="搜索" enterkeyhint="search" spellcheck="false">
+                  <div class="search-tools">
+                    <button class="icon-btn tool-btn" type="button" data-mic-btn aria-label="语音输入" title="语音输入">
+                      <svg class="ico"><use href="#i-mic"/></svg>
+                    </button>
+                    <button class="icon-btn tool-btn" type="button" data-image-btn aria-label="图片识字" title="图片识字">
+                      <svg class="ico"><use href="#i-image"/></svg>
+                    </button>
+                    <button class="ai-toggle is-on" type="button" data-ai-toggle aria-pressed="true" title="开启后由元宝生成摘要">
+                      <svg class="ico"><use href="#i-spark-fill"/></svg>
+                      <span class="ai-label">AI 模式</span>
+                    </button>
+                    <button class="go-btn" type="submit" aria-label="开始搜索">
+                      <svg class="ico"><use href="#i-arrow-up"/></svg>
+                    </button>
+                  </div>
+                </form>
+                <div class="suggest-panel" hidden></div>
+              </div>
+
+              <div class="hero-meta">
+                <span class="meta-item"><span class="dot-live"></span>必应网页索引</span>
+                <span class="meta-dot"></span>
+                <span class="meta-item">AI 摘要已就绪</span>
+                <button class="meta-link" type="button" data-nav-link="discover">看看大家在搜什么<svg class="ico"><use href="#i-chevron"/></svg></button>
+              </div>
+
+              <div class="hero-chips" id="hero-chips">
+                <button class="chip" type="button" data-search="元宝搜索是什么">元宝搜索是什么</button>
+                <button class="chip" type="button" data-search="最近 AI 圈发生了什么">最近 AI 圈发生了什么</button>
+                <button class="chip" type="button" data-search="推荐一部高分悬疑片">推荐一部高分悬疑片</button>
+                <button class="chip" type="button" data-search="如何快速入睡">如何快速入睡</button>
+              </div>
+            </div>
+
+            <div class="hero-art" aria-hidden="true">
+              <div class="art-halo"></div>
+              <div class="art-ring ring-1"></div>
+              <div class="art-ring ring-2"></div>
+              <img class="art-mascot" src="./assets/hero-mascot.webp" alt="">
+              <div class="float-card fc-1">
+                <span class="fc-dots"><i></i><i></i><i></i></span>
+                <span>已读 <b id="art-read-count">12</b> 个网页</span>
+              </div>
+              <div class="float-card fc-2">
+                <span class="fc-spark"><svg class="ico"><use href="#i-spark-fill"/></svg></span>
+                <span>AI 摘要已生成</span>
+              </div>
+              <span class="spark sp-1">✦</span>
+              <span class="spark sp-2">✦</span>
+              <span class="spark sp-3">✦</span>
+            </div>
+          </section>
+
+          <div class="quick-grid">
+            <button class="tool-card" type="button" data-action="research">
+              <span class="tool-ico gold"><svg class="ico"><use href="#i-book"/></svg></span>
+              <span class="tool-text"><strong>AI 深度研究</strong><small>多源资料，一次读透</small></span>
+              <svg class="ico tool-arrow"><use href="#i-chevron"/></svg>
+            </button>
+            <button class="tool-card" type="button" data-action="image">
+              <span class="tool-ico peach"><svg class="ico"><use href="#i-camera"/></svg></span>
+              <span class="tool-text"><strong>图片识字</strong><small>上传图片，识别文字</small></span>
+              <svg class="ico tool-arrow"><use href="#i-chevron"/></svg>
+            </button>
+            <button class="tool-card" type="button" data-action="discover">
+              <span class="tool-ico cream"><svg class="ico"><use href="#i-flame"/></svg></span>
+              <span class="tool-text"><strong>今日热搜</strong><small>全网热点，实时更新</small></span>
+              <svg class="ico tool-arrow"><use href="#i-chevron"/></svg>
+            </button>
+            <button class="tool-card" type="button" data-action="lucky">
+              <span class="tool-ico mint"><svg class="ico"><use href="#i-dice"/></svg></span>
+              <span class="tool-text"><strong>手气不错</strong><small>随机一个搜索灵感</small></span>
+              <svg class="ico tool-arrow"><use href="#i-chevron"/></svg>
+            </button>
           </div>
-          <div class="coin" id="coin-2" data-face="字">
-            <div class="coin-inner"><span class="coin-char">字</span></div>
-            <div class="coin-back"><span class="coin-char">背</span></div>
+
+          <div class="home-grid">
+            <section class="panel hot-panel">
+              <header class="panel-head">
+                <div>
+                  <h2 class="panel-title">全网热搜</h2>
+                  <p class="panel-sub" id="home-hot-source">正在更新</p>
+                </div>
+                <button class="ghost-btn" type="button" id="home-hot-refresh">
+                  <svg class="ico"><use href="#i-refresh"/></svg>换一换
+                </button>
+              </header>
+              <ol class="hot-list" id="home-hot" aria-live="polite">
+                <li class="hot-skel"></li><li class="hot-skel"></li><li class="hot-skel"></li><li class="hot-skel"></li><li class="hot-skel"></li><li class="hot-skel"></li>
+              </ol>
+            </section>
+
+            <section class="panel inspiration-panel">
+              <header class="panel-head">
+                <div>
+                  <h2 class="panel-title">搜索灵感</h2>
+                  <p class="panel-sub">没想好？让元宝猜你想问</p>
+                </div>
+                <span class="mini-badge">每日精选</span>
+              </header>
+              <div class="inspiration-grid" id="home-inspiration"></div>
+              <div class="insp-footer">
+                <p>“好奇心不需要标准答案。”</p>
+                <button class="ghost-btn" type="button" data-action="lucky">
+                  <svg class="ico"><use href="#i-dice"/></svg>让元宝替我选
+                </button>
+              </div>
+            </section>
           </div>
-          <div class="coin" id="coin-3" data-face="字">
-            <div class="coin-inner"><span class="coin-char">字</span></div>
-            <div class="coin-back"><span class="coin-char">背</span></div>
+
+          <footer class="site-footer">
+            <p class="footer-line">用好奇心，喂养元宝。</p>
+            <p class="footer-sub">搜索索引来自 Bing · AI 摘要由开源模型生成 · 概念演示，非腾讯官方产品</p>
+          </footer>
+        </div>
+      </section>
+
+      <!-- 搜索结果 -->
+      <section class="view" id="view-results" data-view="results" hidden>
+        <div class="results-wrap">
+          <div class="results-head">
+            <button class="icon-btn back-btn" type="button" id="results-back" aria-label="返回">
+              <svg class="ico"><use href="#i-arrow-left"/></svg>
+            </button>
+            <div class="search-wrap results-search-wrap">
+              <form class="searchbox compact search-form" id="results-search" role="search" autocomplete="off">
+                <svg class="ico search-ico"><use href="#i-search"/></svg>
+                <input id="results-input" class="search-input" type="search" placeholder="继续搜点什么" aria-label="搜索" enterkeyhint="search" spellcheck="false">
+                <div class="search-tools">
+                  <button class="icon-btn tool-btn" type="button" data-image-btn aria-label="图片识字" title="图片识字">
+                    <svg class="ico"><use href="#i-image"/></svg>
+                  </button>
+                  <button class="ai-toggle is-on" type="button" data-ai-toggle aria-pressed="true" title="AI 摘要">
+                    <svg class="ico"><use href="#i-spark-fill"/></svg>
+                    <span class="ai-label">AI</span>
+                  </button>
+                  <button class="go-btn" type="submit" aria-label="开始搜索">
+                    <svg class="ico"><use href="#i-arrow-up"/></svg>
+                  </button>
+                </div>
+              </form>
+              <div class="suggest-panel" hidden></div>
+            </div>
+            <button class="icon-btn" type="button" id="results-home" aria-label="回到首页">
+              <svg class="ico"><use href="#i-home"/></svg>
+            </button>
+          </div>
+
+          <div class="results-meta">
+            <span class="results-crumb">元宝搜索结果</span>
+            <span class="results-stats"><span id="results-count">正在检索</span><span class="meta-dot"></span><span id="results-time">—</span></span>
+          </div>
+
+          <div class="results-layout">
+            <div class="results-main">
+              <article class="ai-card" id="ai-card" aria-live="polite">
+                <div class="ai-card-head">
+                  <span class="ai-avatar"><img src="./assets/avatar.webp" alt=""><i class="ai-ring"></i></span>
+                  <div class="ai-id">
+                    <strong>元宝 AI</strong>
+                    <span class="ai-badge"><svg class="ico"><use href="#i-spark-fill"/></svg>摘要</span>
+                  </div>
+                  <span class="ai-state" id="ai-state">正在连接全网…</span>
+                </div>
+                <div class="ai-body" id="ai-body">
+                  <div class="sk-line w-100"></div>
+                  <div class="sk-line w-92"></div>
+                  <div class="sk-line w-64"></div>
+                </div>
+                <div class="ai-foot" id="ai-foot"></div>
+              </article>
+
+              <section class="web-section">
+                <header class="section-line">
+                  <h2>网页结果</h2>
+                  <span class="engine-pill"><span class="dot-live"></span>Bing 索引</span>
+                </header>
+                <div class="result-list" id="results-list">
+                  <div class="result-skeleton"></div>
+                  <div class="result-skeleton"></div>
+                  <div class="result-skeleton"></div>
+                </div>
+              </section>
+
+              <section class="related-section" id="related-section" hidden>
+                <h2>大家还在搜</h2>
+                <div class="chip-wrap" id="related-list"></div>
+              </section>
+            </div>
+
+            <aside class="results-aside">
+              <section class="panel side-card">
+                <h3>本次搜索</h3>
+                <dl class="side-info" id="side-info">
+                  <div><dt>搜索引擎</dt><dd>Bing</dd></div>
+                  <div><dt>网页结果</dt><dd>—</dd></div>
+                  <div><dt>耗时</dt><dd>—</dd></div>
+                </dl>
+                <button class="side-link" type="button" id="open-full-results">
+                  在搜索引擎中查看完整结果<svg class="ico"><use href="#i-external"/></svg>
+                </button>
+              </section>
+
+              <section class="panel side-card">
+                <h3>继续追问</h3>
+                <div class="followups" id="followups"></div>
+              </section>
+
+              <div class="side-note">
+                <svg class="ico"><use href="#i-shield"/></svg>
+                <p>搜索记录只保存在本机。AI 摘要可能存在偏差，重要信息请核对原始网页。</p>
+              </div>
+            </aside>
           </div>
         </div>
-        <div class="coin-progress">
-          <span class="progress-label">第 <em id="current-yao">1</em> 爻 / 共 6 爻</span>
-          <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-        </div>
-        <div class="coin-actions">
-          <button class="btn btn-primary" id="btn-toss">掷 铜 钱</button>
-          <button class="btn btn-ghost" id="btn-reset" hidden>重 起</button>
-        </div>
-        <p class="coin-hint" id="coin-hint">三枚铜钱，正在候命</p>
-      </div>
+      </section>
 
-      <!-- 卦象区 -->
-      <div class="hexagram-display" id="hex-display" data-anim="fade-up" data-delay="200">
-        <div class="hex-side">
-          <h3 class="hex-title">本 卦</h3>
-          <div class="hex-row" id="hex-main">
-            <div class="yao yao-yang" data-pos="6"></div>
-            <div class="yao yao-yang" data-pos="5"></div>
-            <div class="yao yao-yang" data-pos="4"></div>
-            <div class="yao yao-yang" data-pos="3"></div>
-            <div class="yao yao-yang" data-pos="2"></div>
-            <div class="yao yao-yang" data-pos="1"></div>
+      <!-- 发现 -->
+      <section class="view" id="view-discover" data-view="discover" hidden>
+        <div class="page-wrap">
+          <header class="page-head">
+            <p class="page-eyebrow">Explore</p>
+            <h1 class="page-title">发现</h1>
+            <p class="page-sub">全网正在发生的，和值得一搜的。</p>
+          </header>
+
+          <div class="discover-grid">
+            <section class="panel hot-panel hot-panel-lg">
+              <header class="panel-head">
+                <div>
+                  <h2 class="panel-title">全网热搜</h2>
+                  <p class="panel-sub" id="discover-hot-source">正在更新</p>
+                </div>
+                <button class="ghost-btn" type="button" id="discover-hot-refresh">
+                  <svg class="ico"><use href="#i-refresh"/></svg>刷新
+                </button>
+              </header>
+              <ol class="hot-list hot-list-lg" id="discover-hot">
+                <li class="hot-skel"></li><li class="hot-skel"></li><li class="hot-skel"></li><li class="hot-skel"></li><li class="hot-skel"></li><li class="hot-skel"></li><li class="hot-skel"></li><li class="hot-skel"></li>
+              </ol>
+              <button class="more-btn" type="button" id="hot-more">展开更多<svg class="ico"><use href="#i-chevron"/></svg></button>
+            </section>
+
+            <aside class="discover-side">
+              <section class="panel quote-card">
+                <img class="quote-mascot" src="./assets/avatar.webp" alt="">
+                <svg class="ico quote-ico"><use href="#i-quote"/></svg>
+                <p>好奇心是最小的冒险，<br>而搜索是出发的方式。</p>
+                <span class="quote-by">元宝 · 今日一句</span>
+              </section>
+
+              <section class="panel">
+                <header class="panel-head compact-head">
+                  <div>
+                    <h2 class="panel-title">换个方式搜</h2>
+                    <p class="panel-sub">给好奇心一点方向</p>
+                  </div>
+                </header>
+                <div class="idea-list" id="discover-ideas"></div>
+              </section>
+
+              <section class="panel source-card">
+                <h3>数据来源</h3>
+                <p>热榜来自公开搜索热榜，每 10 分钟更新一次。搜索结果由 Bing 网页索引提供。</p>
+                <div class="source-tags"><span>Bing</span><span>百度热搜</span></div>
+              </section>
+            </aside>
           </div>
-          <div class="hex-name" id="hex-name-main">—</div>
         </div>
-        <div class="hex-arrow" id="hex-arrow" hidden>→</div>
-        <div class="hex-side" id="hex-changed-wrap" hidden>
-          <h3 class="hex-title">变 卦</h3>
-          <div class="hex-row" id="hex-changed">
-            <div class="yao yao-yang" data-pos="6"></div>
-            <div class="yao yao-yang" data-pos="5"></div>
-            <div class="yao yao-yang" data-pos="4"></div>
-            <div class="yao yao-yang" data-pos="3"></div>
-            <div class="yao yao-yang" data-pos="2"></div>
-            <div class="yao yao-yang" data-pos="1"></div>
+      </section>
+
+      <!-- 历史 -->
+      <section class="view" id="view-history" data-view="history" hidden>
+        <div class="page-wrap narrow">
+          <header class="page-head">
+            <p class="page-eyebrow">Journal</p>
+            <h1 class="page-title">搜索足迹</h1>
+            <p class="page-sub">只保存在这台设备上，随时可以清空。</p>
+          </header>
+
+          <div class="history-toolbar">
+            <span id="history-count">0 条记录</span>
+            <button class="ghost-btn danger" type="button" id="history-clear">
+              <svg class="ico"><use href="#i-trash"/></svg>清空记录
+            </button>
           </div>
-          <div class="hex-name" id="hex-name-changed">—</div>
+
+          <div class="history-list" id="history-list"></div>
+
+          <div class="empty-state" id="history-empty" hidden>
+            <img src="./assets/app-icon.png" alt="">
+            <h2>还没有搜索足迹</h2>
+            <p>去问元宝一个问题，从这里开始。</p>
+            <a class="btn primary" href="#/home">去搜索</a>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <!-- 解卦面板 -->
-      <div class="interpretation-panel" id="interp-panel" data-anim="fade-up" data-delay="300">
-        <h2 class="panel-title">解 卦</h2>
-        <div class="interp-grid" id="interp-grid">
-          <p class="placeholder-text">尚未起卦。请点击「掷铜钱」开始。</p>
+      <!-- 我的 -->
+      <section class="view" id="view-settings" data-view="settings" hidden>
+        <div class="page-wrap narrow">
+          <header class="page-head">
+            <p class="page-eyebrow">Me</p>
+            <h1 class="page-title">我的</h1>
+            <p class="page-sub">把元宝调成你喜欢的样子。</p>
+          </header>
+
+          <section class="profile-card">
+            <img class="profile-avatar" src="./assets/app-icon.png" alt="">
+            <div class="profile-info">
+              <h2>元宝的朋友</h2>
+              <p><span class="dot-live"></span>本地模式 · 无需登录</p>
+            </div>
+            <button class="btn soft install-btn" type="button" data-action="install">
+              <svg class="ico"><use href="#i-install"/></svg>安装应用
+            </button>
+          </section>
+
+          <div class="settings-grid">
+            <section class="panel setting-card">
+              <header class="setting-head">
+                <h2>外观</h2>
+                <p>选一个看着舒服的元宝。</p>
+              </header>
+              <div class="segmented" data-seg="theme">
+                <button type="button" data-theme-set="light">浅色</button>
+                <button type="button" data-theme-set="dark">深色</button>
+                <button type="button" data-theme-set="auto">跟随系统</button>
+              </div>
+              <div class="setting-row">
+                <div><strong>减少动效</strong><small>关闭浮动与过渡动画</small></div>
+                <label class="switch">
+                  <input type="checkbox" id="setting-motion">
+                  <span class="track"><span class="thumb"></span></span>
+                </label>
+              </div>
+            </section>
+
+            <section class="panel setting-card">
+              <header class="setting-head">
+                <h2>搜索引擎</h2>
+                <p>用于打开完整结果与来源跳转。</p>
+              </header>
+              <div class="engine-grid" data-seg="engine">
+                <button type="button" data-engine-set="bing"><span class="engine-logo bing">B</span>必应</button>
+                <button type="button" data-engine-set="baidu"><span class="engine-logo baidu">百</span>百度</button>
+                <button type="button" data-engine-set="sogou"><span class="engine-logo sogou">S</span>搜狗</button>
+                <button type="button" data-engine-set="google"><span class="engine-logo google">G</span>谷歌</button>
+              </div>
+              <div class="setting-row">
+                <div><strong>搜索时生成 AI 摘要</strong><small>让元宝先读网页，再给答案</small></div>
+                <label class="switch">
+                  <input type="checkbox" id="setting-ai">
+                  <span class="track"><span class="thumb"></span></span>
+                </label>
+              </div>
+            </section>
+
+            <section class="panel setting-card">
+              <header class="setting-head">
+                <h2>数据</h2>
+                <p>这些数据只留在这台设备。</p>
+              </header>
+              <div class="setting-row">
+                <div><strong>搜索历史</strong><small id="setting-history-count">0 条记录</small></div>
+                <button class="ghost-btn" type="button" data-action="clear-history">清空</button>
+              </div>
+              <div class="setting-row">
+                <div><strong>恢复默认设置</strong><small>清除偏好与历史，重新开始</small></div>
+                <button class="ghost-btn" type="button" data-action="reset-all">重置</button>
+              </div>
+            </section>
+
+            <section class="panel setting-card about-card">
+              <header class="setting-head">
+                <h2>关于元宝搜索</h2>
+                <p>一个关于「把搜索讲明白」的概念练习。</p>
+              </header>
+              <div class="about-brand">
+                <img src="./assets/app-icon.png" alt="">
+                <div>
+                  <strong>元宝搜索</strong>
+                  <span>版本 1.0.0 · 概念演示</span>
+                </div>
+              </div>
+              <p class="about-text">搜索索引来自 Bing，AI 摘要由开源大模型生成。本应用为交互概念设计，非腾讯官方产品，与腾讯公司无关联。</p>
+              <div class="about-links">
+                <button type="button" data-action="privacy">隐私说明</button>
+                <button type="button" data-action="install">安装到桌面</button>
+                <button type="button" data-action="about">了解更多</button>
+              </div>
+            </section>
+          </div>
+
+          <div class="page-foot">
+            <svg class="ico"><use href="#i-shield"/></svg>
+            <span>无需登录 · 不收集账号信息 · 搜索记录仅存本机</span>
+          </div>
         </div>
-      </div>
+      </section>
+    </main>
 
-      <!-- 历史记录 -->
-      <div class="history-panel" data-anim="fade-up" data-delay="400">
-        <h3 class="panel-title-sm">近 期 问 卦</h3>
-        <ul class="history-list" id="history-list">
-          <li class="placeholder-text">尚无记录</li>
-        </ul>
-      </div>
-    </section>
+    <nav class="tabbar" id="tabbar" aria-label="底部导航">
+      <a href="#/home" data-nav="home"><span class="tab-ico"><svg class="ico"><use href="#i-home"/></svg></span><span>首页</span></a>
+      <a href="#/discover" data-nav="discover"><span class="tab-ico"><svg class="ico"><use href="#i-compass"/></svg></span><span>发现</span></a>
+      <a href="#/history" data-nav="history"><span class="tab-ico"><svg class="ico"><use href="#i-history"/></svg></span><span>历史</span></a>
+      <a href="#/settings" data-nav="settings"><span class="tab-ico"><svg class="ico"><use href="#i-user"/></svg></span><span>我的</span></a>
+    </nav>
+  </div>
 
-    <!-- 64 卦浏览页 -->
-    <section class="view" id="view-hexagrams" data-view="hexagrams" hidden>
-      <div class="hex-page">
-        <h2 class="page-title">六 十 四 卦</h2>
-        <p class="page-desc">点击卦象查看卦辞、爻辞与象传</p>
-        <div class="hex-grid" id="hex-grid"></div>
+  <!-- 图片识字 -->
+  <div class="modal" id="image-modal" hidden>
+    <div class="modal-mask" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="image-modal-title">
+      <button class="icon-btn modal-close" type="button" data-close-modal aria-label="关闭">
+        <svg class="ico"><use href="#i-close"/></svg>
+      </button>
+      <h2 id="image-modal-title">图片识字</h2>
+      <p class="modal-sub">上传一张图片，元宝会认出其中的文字，变成可以搜索的问题。</p>
+      <label class="upload-zone" id="upload-zone">
+        <input type="file" id="image-input" accept="image/*" hidden>
+        <span class="upload-idle" id="upload-idle">
+          <span class="upload-ico"><svg class="ico"><use href="#i-image"/></svg></span>
+          <strong>点击选择图片</strong>
+          <small>支持 JPG / PNG，最大 6MB</small>
+        </span>
+        <img id="image-preview" alt="待识别图片预览" hidden>
+        <span class="upload-change" id="upload-change" hidden>更换图片</span>
+      </label>
+      <div class="ocr-status" id="ocr-status" hidden>
+        <span class="ocr-spinner"></span>
+        <span id="ocr-status-text">正在识别图片中的文字…</span>
       </div>
-    </section>
-
-    <!-- 卦详情弹层 -->
-    <div class="modal-mask" id="hex-modal" hidden>
-      <div class="modal-card" role="dialog" aria-modal="true">
-        <button class="modal-close" id="modal-close" aria-label="关闭">×</button>
-        <div class="modal-body" id="modal-body"></div>
+      <textarea id="ocr-text" class="ocr-text" rows="3" placeholder="识别出的文字会出现在这里，可以改一改再搜" hidden></textarea>
+      <p class="modal-hint">图片仅用于本次文字识别，不会保存在应用里。</p>
+      <div class="modal-actions">
+        <button class="btn ghost" type="button" data-close-modal>取消</button>
+        <button class="btn primary" type="button" id="ocr-search" disabled>用这段文字搜索</button>
       </div>
     </div>
+  </div>
 
-    <!-- 文化区 -->
-    <section class="view" id="view-culture" data-view="culture" hidden>
-      <div class="culture-page">
-        <h2 class="page-title">易 之 源</h2>
+  <!-- 通用弹层 -->
+  <div class="modal sheet" id="sheet" hidden>
+    <div class="modal-mask" data-sheet-close></div>
+    <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <span class="sheet-grab" aria-hidden="true"></span>
+      <h2 id="sheet-title">提示</h2>
+      <div class="sheet-body" id="sheet-body"></div>
+      <div class="sheet-actions" id="sheet-actions"></div>
+    </div>
+  </div>
 
-        <div class="culture-block">
-          <div class="culture-img-wrap">
-            <img src="./assets/taiji.svg" alt="太极八卦图" class="taiji-img" id="taiji-img">
-          </div>
-          <div class="culture-text">
-            <h3 class="panel-title-sm">太 极 生 两 仪</h3>
-            <p>《易·系辞上》：「易有太极，是生两仪，两仪生四象，四象生八卦。」</p>
-            <p>无极而太极。太极动而生阳，静而生阴。阴阳交合，化生万物。</p>
-            <p>八卦者，乾☰兑☱离☲震☳巽☴坎☵艮☶，象征天泽火雷风水山八种自然之力。</p>
-          </div>
-        </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-        <div class="culture-block">
-          <h3 class="panel-title-sm">六 爻 起 卦 法</h3>
-          <p>取三枚铜钱，合于掌中，默念所问，摇掷落下：</p>
-          <ul class="method-list">
-            <li><span class="m-key">三背</span><span class="m-arrow">→</span><span class="m-val">老阴 6（动爻）</span></li>
-            <li><span class="m-key">二背一字</span><span class="m-arrow">→</span><span class="m-val">少阳 7</span></li>
-            <li><span class="m-key">一背二字</span><span class="m-arrow">→</span><span class="m-val">少阴 8</span></li>
-            <li><span class="m-key">三字</span><span class="m-arrow">→</span><span class="m-val">老阳 9（动爻）</span></li>
-          </ul>
-          <p>自下而上共掷六次，累积成卦。老阴老阳为动爻，阴变阳、阳变阴，得出"之卦"（变卦）。</p>
-        </div>
-
-        <div class="culture-block">
-          <h3 class="panel-title-sm">象 数 与 义 理</h3>
-          <p>《易经》以卦象为骨，以数行为脉，以辞为肉。三者合一，方见其神。</p>
-          <p>其理广大，无所不包：仰以观于天文，俯以察于地理，近取诸身，远取诸物。</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 设置页 -->
-    <section class="view" id="view-settings" data-view="settings" hidden>
-      <div class="settings-page">
-        <h2 class="page-title">设 置</h2>
-
-        <div class="setting-card">
-          <div class="setting-row">
-            <div>
-              <h3 class="setting-title">主 题</h3>
-              <p class="setting-desc">宣纸（米白）· 玄夜（墨黑）</p>
-            </div>
-            <div class="theme-switch" role="tablist">
-              <button class="theme-btn" data-theme="light" aria-label="宣纸主题">宣</button>
-              <button class="theme-btn" data-theme="dark" aria-label="玄夜主题">玄</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="setting-card">
-          <div class="setting-row">
-            <div>
-              <h3 class="setting-title">铜 钱 落 盘 声</h3>
-              <p class="setting-desc">起卦时是否发出铜钱落地之声</p>
-            </div>
-            <label class="switch">
-              <input type="checkbox" id="sound-toggle" checked>
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-
-        <div class="setting-card">
-          <div class="setting-row">
-            <div>
-              <h3 class="setting-title">清 除 历 史</h3>
-              <p class="setting-desc">清除本机存储的问卦记录</p>
-            </div>
-            <button class="btn btn-ghost" id="btn-clear-history">清 除</button>
-          </div>
-        </div>
-
-        <div class="setting-card about-card">
-          <h3 class="setting-title">关 于</h3>
-          <p class="setting-desc">周易 · 一念问天 v1.0</p>
-          <p class="setting-desc">水墨国风 · 纯静态网页 · GitHub Pages 部署</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- 页脚 -->
-  <footer class="site-footer">
-    <div class="footer-line"></div>
-    <p>仰以观于天文 · 俯以察于地理</p>
-    <p class="footer-sub">© <span id="year"></span> Zhou Yi · Crafted with reverence</p>
-  </footer>
-
-  <script type="module" src="./script.js"></script>
+  <script type="module" src="./js/app.js?v=11"></script>
 </body>
 </html>
