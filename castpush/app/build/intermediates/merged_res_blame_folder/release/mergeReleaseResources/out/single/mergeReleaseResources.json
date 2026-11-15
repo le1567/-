@@ -1,0 +1,162 @@
+[
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_input.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_input.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_refresh.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_refresh.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_button.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_button.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_panel.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_panel.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_wifi.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_wifi.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_pill.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_pill.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_check.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_check.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_chip_warning.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_chip_warning.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.castpush.app-main-36:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_launcher_bg.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_launcher_bg.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_send.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_send.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_waiting_ring.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_waiting_ring.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_chip_danger.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_chip_danger.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_add.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_add.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.castpush.app-main-36:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/layout_item_history.xml.flat",
+        "source": "com.castpush.app-main-36:/layout/item_history.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_cast.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_cast.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_phone.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_phone.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_dot.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_dot.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_screen.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_screen.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_tv.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_tv.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_apk.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_apk.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_circle_soft.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_circle_soft.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_tab_selected.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_tab_selected.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_chip_success.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_chip_success.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_dashed.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_dashed.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_card.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_card.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_history.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_history.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/xml_network_security_config.xml.flat",
+        "source": "com.castpush.app-main-36:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_close.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_close.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_icon_tile.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_icon_tile.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_shield.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_shield.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_chevron_right.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_chevron_right.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/layout_item_device.xml.flat",
+        "source": "com.castpush.app-main-36:/layout/item_device.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_ic_install.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/ic_install.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_card_selected.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_card_selected.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/drawable_bg_segment.xml.flat",
+        "source": "com.castpush.app-main-36:/drawable/bg_segment.xml"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/raw_upload.html.flat",
+        "source": "com.castpush.app-main-36:/raw/upload.html"
+    },
+    {
+        "merged": "com.castpush.app-release-35:/layout_activity_main.xml.flat",
+        "source": "com.castpush.app-main-36:/layout/activity_main.xml"
+    }
+]

@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.castpush.app-mergeReleaseResources-33:/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "/root/.gradle/caches/8.14.6/transforms/a843f303ef61bce9b2325f6697ae3f0d/transformed/appcompat-1.7.0/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        }
+    ]
+}

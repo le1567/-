@@ -1,0 +1,7 @@
+#Sun Nov 15 14:35:02 CST 2026
+base.1=/workspace/castpush/app/build/intermediates/dex/release/mergeDexRelease/classes2.dex
+path.1=classes2.dex
+base.0=/workspace/castpush/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex

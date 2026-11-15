@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">投屏快传</string>
+    <string name="app_subtitle">局域网 · 投屏推送安装包</string>
+
+    <string name="tab_send">发送</string>
+    <string name="tab_receive">接收</string>
+    <string name="status_receiving">接收中</string>
+    <string name="status_stopped">已停止</string>
+
+    <string name="pick_title">选择 APK 安装包</string>
+    <string name="pick_sub">点击从文件管理器中选择</string>
+    <string name="change">更换</string>
+    <string name="picking">正在读取安装包…</string>
+
+    <string name="devices_title">附近的接收设备</string>
+    <string name="rescan">重新扫描</string>
+    <string name="scanning">扫描中…</string>
+    <string name="empty_devices">未发现接收设备</string>
+    <string name="empty_devices_sub">请确认另一台设备已打开「投屏快传」并开启接收</string>
+    <string name="manual_add">手动输入 IP 添加</string>
+
+    <string name="send_push">投屏推送</string>
+    <string name="send_hint">通过局域网投屏通道直传，接收端确认后安装</string>
+    <string name="preparing">正在准备…</string>
+    <string name="pushing">正在投送…</string>
+    <string name="status_sent">已送达</string>
+    <string name="status_wait">待安装</string>
+    <string name="status_installed">已安装</string>
+    <string name="status_failed">失败</string>
+
+    <string name="receiving_title">接收投屏</string>
+    <string name="receiving_sub">保持开启，等待局域网内的安装包推送</string>
+    <string name="device_name">设备名称</string>
+    <string name="lan_address">局域网地址</string>
+    <string name="service_port">服务端口</string>
+    <string name="web_push">浏览器投送</string>
+    <string name="protocol">投屏协议</string>
+    <string name="protocol_value">DLNA / SSDP</string>
+
+    <string name="confirm_switch">推送前确认</string>
+    <string name="confirm_switch_sub">需在接收端前台确认；关闭后自动接收</string>
+    <string name="auto_install">接收后自动安装</string>
+    <string name="auto_install_sub">调起系统安装器，仍需系统确认</string>
+
+    <string name="permission_title">需要安装权限</string>
+    <string name="permission_sub">授予「安装未知应用」后才能在接收后调起安装</string>
+    <string name="grant">去授权</string>
+
+    <string name="waiting_title">正在等待投屏推送</string>
+    <string name="waiting_sub">在发送端选择本设备，即可推送 APK</string>
+    <string name="paused_title">接收已暂停</string>
+    <string name="paused_sub">打开上方开关，开始接收局域网投屏</string>
+
+    <string name="history_title">传输记录</string>
+    <string name="history_empty">暂无传输记录</string>
+
+    <string name="incoming_dialog_title">接收投屏推送？</string>
+    <string name="accept">接收</string>
+    <string name="reject">拒绝</string>
+    <string name="cancel">取消</string>
+    <string name="install">安装</string>
+    <string name="manual_dialog_title">手动添加接收设备</string>
+    <string name="manual_dialog_hint">输入接收端 IP，可带端口（默认 8790）</string>
+    <string name="add">添加</string>
+
+    <string name="notif_channel_service">接收服务</string>
+    <string name="notif_channel_install">安装提醒</string>
+    <string name="notif_service_title">投屏快传 · 接收中</string>
+    <string name="notif_service_text">等待投屏推送 · %1$s</string>
+    <string name="notif_stop">停止接收</string>
+    <string name="notif_install_title">已接收安装包</string>
+    <string name="notif_install_text">%1$s · 点击安装</string>
+
+    <string name="unknown_app">未知应用</string>
+    <string name="unknown_sender">局域网设备</string>
+    <string name="ready">可接收</string>
+    <string name="busy">不接收</string>
+    <string name="self_device">本机</string>
+</resources>

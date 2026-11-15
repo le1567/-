@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.castpush.app.CastTransferTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-11-15T06:32:31.763Z" hostname="all-in-one-79-8gqt8" time="0.477">
+  <properties/>
+  <testcase name="browserPageServed" classname="com.castpush.app.CastTransferTest" time="0.105"/>
+  <testcase name="statusEndpointResponds" classname="com.castpush.app.CastTransferTest" time="0.02"/>
+  <testcase name="pushApkEndToEnd" classname="com.castpush.app.CastTransferTest" time="0.297"/>
+  <testcase name="rejectedPushFails" classname="com.castpush.app.CastTransferTest" time="0.054"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
