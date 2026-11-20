@@ -1,0 +1,153 @@
+/* New in 3.0: three cards under the hero. */
+.nowrap { white-space: nowrap; }
+.new-section { padding-top: clamp(64px, 7vw, 96px); }
+
+.new-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: clamp(40px, 4.5vw, 58px);
+}
+
+.new-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(120% 100% at 100% 0%, rgba(138, 99, 244, .08), transparent 55%),
+    linear-gradient(180deg, rgba(243, 240, 233, .045), rgba(243, 240, 233, .01) 60%),
+    rgba(9, 13, 16, .62);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05);
+  transition: border-color .35s ease, transform .45s var(--ease);
+}
+
+.new-card:hover { border-color: rgba(243, 240, 233, .19); transform: translateY(-3px); }
+
+.new-shot {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.new-shot img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.new-shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(5, 9, 12, .55));
+  pointer-events: none;
+}
+
+.play-badge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 54px;
+  height: 54px;
+  margin: -27px 0 0 -27px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .45);
+  background: rgba(6, 9, 11, .35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.play-badge::after {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 17px;
+  border-left: 13px solid rgba(255, 255, 255, .92);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+.new-copy { padding: 22px 22px 24px; }
+.new-copy h3 {
+  margin-top: 10px;
+  font-family: var(--serif);
+  font-size: clamp(21px, 1.9vw, 25px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -.02em;
+}
+.new-copy p:not(.card-eyebrow) {
+  margin-top: 10px;
+  font-size: 13.4px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+.transfer-visual {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(70% 90% at 20% 20%, rgba(47, 211, 192, .18), transparent 65%),
+    radial-gradient(70% 90% at 85% 75%, rgba(138, 99, 244, .2), transparent 65%),
+    #080d11;
+}
+
+.mini-phone {
+  width: min(74%, 270px);
+  padding: 15px 15px 13px;
+  border: 1px solid rgba(243, 240, 233, .16);
+  border-radius: 18px;
+  background: rgba(10, 15, 19, .8);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .06);
+  transform: rotate(-2.2deg);
+}
+
+.mini-title { display: block; font-size: 13px; font-weight: 600; letter-spacing: .01em; }
+.mini-sub { display: block; margin-top: 2px; font-size: 9.5px; color: var(--dim); }
+
+.mini-file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 9px;
+  padding: 7px 8px;
+  border: 1px solid rgba(243, 240, 233, .09);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, .03);
+  font-size: 9.5px;
+  color: rgba(243, 240, 233, .78);
+}
+.mini-file b {
+  flex: none;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 7.5px;
+  letter-spacing: .02em;
+  color: #06110e;
+  background: var(--teal);
+}
+.mini-file span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mini-file em { flex: none; font-style: normal; color: var(--teal); font-size: 9px; }
+
+.mini-track { height: 2.5px; margin-top: 11px; border-radius: 99px; background: rgba(255, 255, 255, .08); overflow: hidden; }
+.mini-track i { display: block; width: 72%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--teal), var(--violet)); }
+
+.look-shot .look-icon {
+  position: absolute;
+  left: 15px;
+  bottom: 14px;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  box-shadow: 0 10px 26px -8px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 255, 255, .14);
+  z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .new-grid { grid-template-columns: 1fr; }
+  .new-shot, .transfer-visual { aspect-ratio: 16 / 9; }
+}

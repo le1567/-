@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电视桌面 3.0 · 给电视一块干净的桌面 — APK 下载</title>
+<meta name="description" content="电视桌面是基于 Aerial 的 Android TV 桌面：没有广告，没有推荐流，只有你的 App、极光壁纸、航拍屏保，以及手机扫码传文件。支持小米、TCL、创维、海信等电视，无需 root。">
+<meta name="theme-color" content="#06090b">
+<meta property="og:title" content="电视桌面 3.0 · 给电视一块干净的桌面">
+<meta property="og:description" content="没有广告，没有推荐流。只有你的 App、极光壁纸、航拍屏保，和手机扫码传 APK。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="./assets/banner.png">
+<link rel="icon" href="./assets/icon.png" type="image/png">
+<link rel="preload" href="./assets/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./assets/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./assets/fonts/noto-serif-sc-subset.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./assets/fonts/noto-sans-sc-subset.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./new.css">
+<script>document.documentElement.classList.add("js");</script>
+<script defer src="./app.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<div class="atmosphere" aria-hidden="true">
+  <div class="atmo-glow atmo-glow-teal"></div>
+  <div class="atmo-glow atmo-glow-violet"></div>
+  <div class="atmo-grid"></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="site-head" id="top">
+  <div class="wrap head-inner">
+    <a class="brand" href="#top" aria-label="电视桌面 首页">
+      <img class="brand-icon" src="./assets/icon.png" width="30" height="30" alt="">
+      <span class="brand-word">电视桌面</span>
+      <span class="brand-tag">TV</span>
+    </a>
+
+    <nav class="nav" aria-label="主导航">
+      <a href="#new">新版</a>
+      <a href="#desktop">桌面</a>
+      <a href="#screensaver">屏保</a>
+      <a href="#install">安装</a>
+    </nav>
+
+    <div class="head-actions">
+      <span class="ver-chip">v3.0</span>
+      <a class="btn btn-small" href="./tv-desktop-3.0.apk" download type="application/vnd.android.package-archive">
+        下载 APK
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow reveal-load" style="--d:.05s">
+          <span class="pulse-dot"></span>
+          AERIAL CORE · TV DESKTOP 3.0
+        </p>
+
+        <h1 class="reveal-load" style="--d:.12s">
+          把电视，<br><span class="accent-serif">还给客厅。</span>
+        </h1>
+
+        <p class="hero-lede reveal-load" style="--d:.2s">
+          电视桌面是基于 Aerial 改的 Android TV 桌面。<br>
+          没有广告，没有推荐流，只有你的 App、极光壁纸、航拍屏保，和手机<span class="nowrap">扫码传文件</span>。
+        </p>
+
+        <div class="hero-cta reveal-load" style="--d:.28s">
+          <a class="btn btn-primary" href="./tv-desktop-3.0.apk" download type="application/vnd.android.package-archive">
+            <span>下载 APK</span>
+            <span class="btn-sub">v3.0 · 6.1 MB</span>
+          </a>
+          <a class="btn btn-quiet" href="#new">
+            <span>看看 3.0 新在哪</span>
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 3v10M3.6 8.6 8 13l4.4-4.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <ul class="hero-notes reveal-load" style="--d:.36s">
+          <li>新签名 · 需先卸载旧版</li>
+          <li>扫码传 APK</li>
+          <li>MIT 开源</li>
+        </ul>
+      </div>
+
+      <div class="hero-stage reveal-load" style="--d:.3s">
+        <div class="stage-glow" aria-hidden="true"></div>
+
+        <div class="tv" data-parallax>
+          <div class="tv-bezel">
+            <img src="./assets/home.jpg" width="1600" height="900" alt="电视桌面首页实机界面：航拍夜景壁纸、时钟与天气，底部是一排常用应用" fetchpriority="high">
+            <div class="tv-glare" aria-hidden="true"></div>
+          </div>
+          <span class="tv-foot" aria-hidden="true"></span>
+        </div>
+
+        <span class="float-chip chip-a"><i class="chip-dot"></i>0 广告位 · 0 推荐流</span>
+        <span class="float-chip chip-b">新增扫码传文件</span>
+
+        <p class="stage-caption">电视桌面 3.0 · 实机界面</p>
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>无广告</span><i>✦</i>
+        <span>无推荐流</span><i>✦</i>
+        <span>手机扫码传 APK</span><i>✦</i>
+        <span>开机欢迎动画</span><i>✦</i>
+        <span>极光图标与壁纸</span><i>✦</i>
+        <span>114 段航拍影片</span><i>✦</i>
+        <span>4K 杜比视界</span><i>✦</i>
+        <span>必应每日壁纸</span><i>✦</i>
+        <span>开机直达</span><i>✦</i>
+        <span>无广告</span><i>✦</i>
+        <span>无推荐流</span><i>✦</i>
+        <span>手机扫码传 APK</span><i>✦</i>
+        <span>开机欢迎动画</span><i>✦</i>
+        <span>极光图标与壁纸</span><i>✦</i>
+        <span>114 段航拍影片</span><i>✦</i>
+        <span>4K 杜比视界</span><i>✦</i>
+        <span>必应每日壁纸</span><i>✦</i>
+        <span>开机直达</span><i>✦</i>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW IN 3.0 -->
+  <section class="section new-section" id="new">
+    <div class="wrap">
+      <header class="sec-head sec-head-split">
+        <div>
+          <p class="kicker reveal"><span>NEW</span> IN 3.0</p>
+          <h2 class="reveal">这次，除了干净，<br>还多了三件小事。</h2>
+        </div>
+        <p class="sec-lede reveal">
+          换了自己的图标、壁纸和进入动画，也把手机传文件这件事放进了桌面。
+          底层还是 Aerial，其他功能没有动。
+        </p>
+      </header>
+
+      <div class="new-grid">
+        <article class="new-card reveal">
+          <figure class="new-shot">
+            <img src="./assets/boot.jpg" width="1280" height="720" loading="lazy" alt="电视桌面的进入动画：雪山湖泊与「欢迎开机」字样">
+            <span class="play-badge" aria-hidden="true"></span>
+          </figure>
+          <div class="new-copy">
+            <p class="card-eyebrow">BOOT</p>
+            <h3>开机第一眼</h3>
+            <p>每次开机后的第一次进入桌面，先放 5 秒欢迎动画。按遥控器任意键就能跳过。</p>
+          </div>
+        </article>
+
+        <article class="new-card reveal">
+          <div class="transfer-visual" aria-hidden="true">
+            <div class="mini-phone">
+              <span class="mini-title">文件传输</span>
+              <span class="mini-sub">同一 Wi-Fi · 手机浏览器</span>
+              <div class="mini-file"><b>APK</b><span>电视桌面-3.0.apk</span><em>安装</em></div>
+              <div class="mini-file"><b>IMG</b><span>雪山壁纸.jpg</span><em>打开</em></div>
+              <div class="mini-track"><i></i></div>
+            </div>
+          </div>
+          <div class="new-copy">
+            <p class="card-eyebrow">LOCAL TRANSFER</p>
+            <h3>扫码，把 APK 送上去</h3>
+            <p>控制中心里多了一个「文件传输」二维码。手机扫码后可以直接传 APK、照片、视频，APK 能在电视上打开安装器。</p>
+          </div>
+        </article>
+
+        <article class="new-card reveal">
+          <figure class="new-shot look-shot">
+            <img src="./assets/wallpaper.jpg" width="1600" height="900" loading="lazy" alt="电视桌面新壁纸：雪山湖泊、日出与鲁冰花">
+            <img class="look-icon" src="./assets/icon.png" width="76" height="76" alt="">
+          </figure>
+          <div class="new-copy">
+            <p class="card-eyebrow">NEW LOOK</p>
+            <h3>极光图标，雪山壁纸</h3>
+            <p>新的应用图标与默认壁纸已经打包进 APK，首次安装就会选中这张壁纸。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 DESKTOP -->
+  <section class="section" id="desktop">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="kicker reveal"><span>01</span> THE DESKTOP</p>
+        <h2 class="reveal">干净，是最高级的功能。</h2>
+        <p class="sec-lede reveal">
+          没有贴片广告，没有会员角标，也没有猜你喜欢的推荐流。桌面只留下两样东西：
+          你的 App，和一片风景。
+        </p>
+      </header>
+
+      <div class="desktop-grid">
+        <article class="card card-home reveal">
+          <div class="card-head">
+            <p class="card-eyebrow">HOME</p>
+            <h3>一排常用的 App，<br>落在玻璃底板上。</h3>
+            <p>往下滚是全部应用。连小米「应用中心」「米家」这类藏起来的系统 App，也在。</p>
+          </div>
+          <figure class="shot">
+            <img src="./assets/grid.jpg" width="1600" height="900" loading="lazy" alt="Aerial 应用网格：常用应用与系统应用文件夹">
+          </figure>
+        </article>
+
+        <article class="card card-organize reveal">
+          <div class="card-head">
+            <p class="card-eyebrow">ORGANIZE</p>
+            <h3>长按 OK，<br>把桌面理顺。</h3>
+            <p>移动、放进文件夹、隐藏、卸载，或者设成「开机时打开」——直接进入某个 App 或信号源。</p>
+          </div>
+          <figure class="shot shot-tall">
+            <img src="./assets/menu.jpg" width="1600" height="900" loading="lazy" alt="Aerial 长按应用弹出的菜单：移动、移到文件夹、隐藏、应用信息、开机时打开、卸载">
+          </figure>
+        </article>
+
+        <article class="card card-phone reveal">
+          <div class="card-head">
+            <p class="card-eyebrow">FROM YOUR PHONE</p>
+            <h3>也可以躺沙发上，<br>用手机整理。</h3>
+            <p>扫电视上的二维码，手机里就是同一张图标网格；现在还能直接传 APK。</p>
+          </div>
+          <div class="phone-wrap" aria-hidden="true">
+            <div class="phone">
+              <span class="phone-notch"></span>
+              <div class="phone-grid">
+                <span class="tile tile-1"></span>
+                <span class="tile tile-2"></span>
+                <span class="tile tile-3"></span>
+                <span class="tile tile-4"></span>
+                <span class="tile tile-5"></span>
+                <span class="tile tile-6"></span>
+              </div>
+              <span class="phone-caption">电视桌面 · 手机整理</span>
+            </div>
+          </div>
+          <ul class="mini-list">
+            <li>拖动排序</li>
+            <li>改名换图标</li>
+            <li>文件夹与隐藏</li>
+            <li>添加 HDMI 信号源</li>
+          </ul>
+        </article>
+
+        <article class="card card-zero reveal">
+          <div class="card-head">
+            <p class="card-eyebrow">ZERO</p>
+            <h3>把广告位，<br>从桌面里拿掉。</h3>
+          </div>
+          <div class="zero-row" aria-label="0 个广告位，0 条推荐流">
+            <div class="zero"><b>0</b><span>广告位</span></div>
+            <div class="zero"><b>0</b><span>推荐流</span></div>
+            <div class="zero"><b>114</b><span>段航拍</span></div>
+          </div>
+          <p class="fineprint">开机广告由电视固件播放，电视桌面不参与。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 SCREENSAVER -->
+  <section class="screensaver" id="screensaver">
+    <div class="saver-bg" aria-hidden="true"></div>
+    <div class="saver-shade" aria-hidden="true"></div>
+
+    <div class="saver-clock" aria-hidden="true">
+      <span class="saver-zone">TV DESKTOP · SCREENSAVER</span>
+      <span class="saver-time" id="saverTime">21:07</span>
+      <span class="saver-date" id="saverDate">11月20日 星期五</span>
+      <span class="saver-weather">晴 17° · 微风</span>
+    </div>
+
+    <div class="wrap saver-wrap">
+      <div class="saver-copy">
+        <p class="kicker light reveal"><span>02</span> SCREENSAVER</p>
+        <h2 class="reveal">不看电视的时候，<br>它在放世界。</h2>
+        <p class="saver-lede reveal">
+          Apple TV 的 114 段航拍影片。电视支持时，以 4K 或 4K 杜比视界播放；
+          也可以换成你的照片、一个安静的时钟，或手机里传来的视频。
+        </p>
+
+        <ul class="saver-stats reveal">
+          <li><b>114</b><span>段航拍影片</span></li>
+          <li><b>4K</b><span>杜比视界</span></li>
+          <li><b>10s</b><span>壁纸开始流动</span></li>
+        </ul>
+
+        <p class="saver-note reveal">屏保画面示意 · 实际内容为航拍影片</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 DETAILS -->
+  <section class="section" id="details">
+    <div class="wrap">
+      <header class="sec-head sec-head-split">
+        <div>
+          <p class="kicker reveal"><span>03</span> DETAILS</p>
+          <h2 class="reveal">每天都碰到的小事，<br>都重新想过。</h2>
+        </div>
+        <p class="sec-lede reveal">
+          壁纸、时钟、信号源、按键声——这些不起眼的细节，决定了一块桌面能不能待得久。
+        </p>
+      </header>
+
+      <div class="bento">
+        <article class="bento-card bento-wall reveal">
+          <div class="card-head">
+            <p class="card-eyebrow">WALLPAPER</p>
+            <h3>每天，换一片风景。</h3>
+            <p>必应每日精选、14 张内置壁纸、新的雪山默认壁纸、手机扫码上传的照片与视频，或者让航拍在主屏上流动。</p>
+          </div>
+          <ul class="chips">
+            <li>必应每日</li>
+            <li>14 张内置</li>
+            <li>新默认壁纸</li>
+            <li>扫码上传</li>
+            <li>航拍壁纸</li>
+          </ul>
+          <p class="fineprint">停留 10 秒，航拍就在磁贴后面播放。</p>
+        </article>
+
+        <article class="bento-card reveal">
+          <div class="card-head">
+            <p class="card-eyebrow">CONTROL CENTER</p>
+            <h3>控制中心，<br>在右上角。</h3>
+            <p>在第一排按上键滑出，不用离开桌面。</p>
+          </div>
+          <ul class="icon-list">
+            <li>
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M7.5 17h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              信号源
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 7.5a10.5 10.5 0 0 1 14 0M5.8 10.6a6.6 6.6 0 0 1 8.4 0M8.6 13.6a2.7 2.7 0 0 1 2.8 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="10" cy="16" r=".9" fill="currentColor"/></svg>
+              网络
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h9M16 6h1M3 14h2M8 14h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="14" cy="6" r="2.1" stroke="currentColor" stroke-width="1.4"/><circle cx="6" cy="14" r="2.1" stroke="currentColor" stroke-width="1.4"/></svg>
+              设置
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 8h2.5L10 5v10L6.5 12H4V8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M13 7.5a3.6 3.6 0 0 1 0 5M15.4 5a7 7 0 0 1 0 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              音量
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="3.6" stroke="currentColor" stroke-width="1.4"/><path d="M10 2v2.2M10 15.8V18M2 10h2.2M15.8 10H18M4.4 4.4l1.6 1.6M14 14l1.6 1.6M15.6 4.4 14 6M6 14l-1.6 1.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              亮度
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.8 11.7 7l4.2 1.7-4.2 1.7L10 14.6 8.3 10.4 4.1 8.7 8.3 7 10 2.8Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M15.5 14.2l.7 1.7 1.7.7-1.7.7-.7 1.7-.7-1.7-1.7-.7 1.7-.7.7-1.7Z" fill="currentColor"/></svg>
+              个性化
+            </li>
+          </ul>
+        </article>
+
+        <article class="bento-card bento-personal reveal">
+          <div class="card-head">
+            <p class="card-eyebrow">MAKE IT YOURS</p>
+            <h3>你的桌面，<br>按你的习惯来。</h3>
+          </div>
+          <dl class="opt-list">
+            <div><dt>每排 App</dt><dd>4 / 5 / 6 个</dd></div>
+            <div><dt>排布</dt><dd>单排 / 双排</dd></div>
+            <div><dt>时钟</dt><dd>大小与位置</dd></div>
+            <div><dt>名称</dt><dd>显示 / 隐藏</dd></div>
+            <div><dt>焦点</dt><dd>样式可选</dd></div>
+            <div><dt>按键</dt><dd>提示音</dd></div>
+          </dl>
+          <figure class="shot shot-inset">
+            <img src="./assets/focus.jpg" width="1600" height="900" loading="lazy" alt="Aerial 首页第一排应用的玻璃焦点底板">
+          </figure>
+        </article>
+
+        <article class="bento-card bento-boot reveal">
+          <div class="card-head">
+            <p class="card-eyebrow">ALWAYS HOME</p>
+            <h3>开机就在，<br>待机也不走。</h3>
+            <p>开机自动进入，待机后不会被系统清理。原桌面还在 App 列表里，随时能退回去。</p>
+          </div>
+          <div class="source-pills">
+            <span>HDMI</span>
+            <span>Apple TV</span>
+            <span>PlayStation</span>
+            <span>Switch</span>
+            <span>Xbox</span>
+            <span>电脑</span>
+          </div>
+          <p class="fineprint">给任意 App 或信号源设「开机时打开」。</p>
+        </article>
+      </div>
+
+      <div class="compat reveal">
+        <span class="compat-label">适配</span>
+        <p>小米 / Redmi · TCL / 雷鸟 · 创维 · 海信 / Vidda · 海尔 · 索尼 · OPPO · 盒子与投影仪</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 INSTALL -->
+  <section class="section install" id="install">
+    <div class="wrap install-grid">
+      <div class="install-copy">
+        <p class="kicker reveal"><span>04</span> INSTALL</p>
+        <h2 class="reveal">三步，<br>换一块桌面。</h2>
+        <p class="sec-lede reveal">
+          不用 root，不动系统应用，原来的会员、小爱和有线电视都还在。
+          注意：3.0 换了新签名，不能覆盖安装旧版 Aerial，旧设置会被清空。
+        </p>
+
+        <ol class="steps">
+          <li class="reveal">
+            <span class="step-num">01</span>
+            <div>
+              <h3>先卸载旧版 Aerial</h3>
+              <p>新签名与官方旧版不一致，只能全新安装。在电视设置里卸载，或者执行 <code>adb uninstall app.orchard.tv</code>。</p>
+            </div>
+          </li>
+          <li class="reveal">
+            <span class="step-num">02</span>
+            <div>
+              <h3>安装电视桌面 3.0</h3>
+              <p>适用于 Android 5.0 及以上的电视、盒子和投影仪。6.1 MB。拷进 U 盘安装，或 <code>adb install tv-desktop-3.0.apk</code>。</p>
+            </div>
+          </li>
+          <li class="reveal">
+            <span class="step-num">03</span>
+            <div>
+              <h3>设为主屏幕，重启</h3>
+              <p>按主页键选择「电视桌面」，再选「始终」。重启电视后能看到新的进入动画；控制中心里多了「文件传输」。</p>
+            </div>
+          </li>
+        </ol>
+
+        <details class="adb reveal">
+          <summary>进阶：用 ADB 安装、授权并打开</summary>
+          <pre><code>adb connect &lt;电视IP&gt;:5555
+adb uninstall app.orchard.tv
+adb install tv-desktop-3.0.apk
+adb shell pm grant app.orchard.tv android.permission.WRITE_SECURE_SETTINGS
+adb shell cmd notification allow_listener app.orchard.tv/app.orchard.tv.guard.RevivalListener
+adb shell appops set app.orchard.tv SYSTEM_ALERT_WINDOW allow
+adb shell am start -n app.orchard.tv/.MainActivity</code></pre>
+          <p>卸载旧版会丢失原来的桌面设置和上传过的照片；这是新签名带来的限制。底层安装步骤也可参考 <a href="https://aerial.qust.me/agent.md" target="_blank" rel="noopener noreferrer">Aerial 官方说明</a>。</p>
+        </details>
+      </div>
+
+      <aside class="download-card reveal" id="download">
+        <div class="dc-head">
+          <img src="./assets/icon.png" width="54" height="54" alt="电视桌面应用图标">
+          <div>
+            <p class="dc-name">电视桌面</p>
+            <p class="dc-ver">Modified · 3.0 (300)</p>
+          </div>
+          <span class="dc-free">免费</span>
+        </div>
+
+        <dl class="dc-meta">
+          <div><dt>系统</dt><dd>Android 5.0+</dd></div>
+          <div><dt>大小</dt><dd>6.1 MB</dd></div>
+          <div><dt>包名</dt><dd>app.orchard.tv</dd></div>
+          <div><dt>许可</dt><dd>MIT</dd></div>
+        </dl>
+
+        <a class="btn btn-primary btn-block" href="./tv-desktop-3.0.apk" download type="application/vnd.android.package-archive">
+          <span>下载电视桌面 3.0</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 2.5v8M4.6 7.2 8 10.6l3.4-3.4M3 13.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <p class="checksum">
+          SHA-256
+          <code title="7b815be8c5561d52903ee7f3a5dd9a2411ebf8328f24ec718899ba5b6844013d">7b815be8…b4013d</code>
+        </p>
+
+        <div class="dc-links">
+          <a href="https://github.com/pengchujin/aerial-tv" target="_blank" rel="noopener noreferrer">Aerial 原项目</a>
+          <a href="https://aerial.qust.me" target="_blank" rel="noopener noreferrer">Aerial 官网</a>
+          <a href="#new">3.0 新功能</a>
+        </div>
+
+        <p class="dc-note">基于 Aerial 2.11（MIT）修改，非官方构建。新签名指纹 3538 664a…0f2b；与官方更新包不通用。</p>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <img class="brand-icon" src="./assets/icon.png" width="28" height="28" alt="">
+          <span class="brand-word">电视桌面</span>
+        </a>
+        <p>给国产电视的一块干净桌面。</p>
+      </div>
+
+      <nav class="foot-links" aria-label="页脚链接">
+        <div>
+          <p class="foot-title">项目</p>
+          <a href="https://github.com/pengchujin/aerial-tv" target="_blank" rel="noopener noreferrer">Aerial 原项目</a>
+          <a href="https://aerial.qust.me" target="_blank" rel="noopener noreferrer">Aerial 官方网站</a>
+          <a href="https://aerial.qust.me/agent.md" target="_blank" rel="noopener noreferrer">安装文档</a>
+        </div>
+        <div>
+          <p class="foot-title">下载</p>
+          <a href="./tv-desktop-3.0.apk" download>电视桌面 3.0</a>
+          <a href="#new">3.0 新功能</a>
+          <a href="#install">安装步骤</a>
+        </div>
+        <div>
+          <p class="foot-title">本页</p>
+          <a href="https://github.com/pengchujin/aerial-tv/releases" target="_blank" rel="noopener noreferrer">Aerial 版本历史</a>
+          <a href="#top">回到顶部</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="foot-bottom">
+      <p>电视桌面基于 Aerial（MIT 许可）修改。本页是第三方下载页，非官方站点。</p>
+      <p>© 2026 · 电视桌面 3.0</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
