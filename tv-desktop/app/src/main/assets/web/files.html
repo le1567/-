@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070b10">
+<title>文件传输 · 电视桌面</title>
+<style>
+  :root {
+    --bg: #070b10;
+    --panel: rgba(17, 24, 34, .72);
+    --panel-2: rgba(255, 255, 255, .045);
+    --line: rgba(255, 255, 255, .1);
+    --line-strong: rgba(255, 255, 255, .18);
+    --text: #f2f5f7;
+    --muted: #98a4b3;
+    --dim: #65717f;
+    --teal: #44e0c8;
+    --violet: #9a7bff;
+    --amber: #f0b57c;
+    --danger: #ff7c86;
+    --radius: 22px;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -20% -30% auto;
+    height: 70vh;
+    background:
+      radial-gradient(50% 60% at 22% 40%, rgba(68, 224, 200, .22), transparent 65%),
+      radial-gradient(45% 55% at 78% 26%, rgba(154, 123, 255, .22), transparent 66%),
+      radial-gradient(40% 50% at 55% 75%, rgba(240, 181, 124, .1), transparent 70%);
+    filter: blur(30px);
+    pointer-events: none;
+    z-index: -2;
+  }
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000, transparent 78%);
+    mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000, transparent 78%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; }
+  .wrap { width: min(100% - 40px, 760px); margin: 0 auto; }
+  header { padding: 26px 0 10px; }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .back {
+    display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px;
+    padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.025);
+  }
+  .back:active { background: rgba(255,255,255,.07); }
+  .tv { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; color: var(--dim); }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(68,224,200,.1); }
+  .hero { padding: 30px 0 26px; }
+  .eyebrow { margin: 0; font-size: 10px; letter-spacing: .22em; color: var(--teal); text-transform: uppercase; }
+  h1 { margin: 10px 0 10px; font-size: clamp(34px, 9vw, 48px); line-height: 1.15; letter-spacing: -.03em; font-weight: 600; }
+  .hero p { margin: 0; max-width: 32em; color: var(--muted); font-size: 14px; }
+  .hero .en { display: block; margin-top: 6px; color: var(--dim); font-size: 11px; letter-spacing: .04em; }
+
+  .glass {
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018)), var(--panel);
+    border-radius: var(--radius);
+    box-shadow: 0 24px 60px -30px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .drop {
+    position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 218px; padding: 28px 20px; text-align: center; cursor: pointer;
+    border: 1.5px dashed rgba(255,255,255,.2); border-radius: var(--radius);
+    background: radial-gradient(120% 120% at 50% 0%, rgba(68,224,200,.08), transparent 58%), rgba(255,255,255,.02);
+    transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
+  }
+  .drop:active, .drop.on { border-color: rgba(68,224,200,.6); background-color: rgba(68,224,200,.06); transform: scale(.995); }
+  .drop svg { width: 44px; height: 44px; color: var(--teal); margin-bottom: 14px; }
+  .drop b { font-size: 16px; font-weight: 500; }
+  .drop span { margin-top: 6px; font-size: 12px; color: var(--muted); }
+  .drop .apk { margin-top: 14px; display: inline-flex; gap: 8px; align-items: center; padding: 5px 10px; border-radius: 999px; border: 1px solid rgba(240,181,124,.3); color: var(--amber); font-size: 10.5px; letter-spacing: .04em; }
+  .drop input { display: none; }
+
+  .transfer { margin-top: 14px; display: grid; gap: 10px; }
+  .titem { padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.03); }
+  .trow { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12.5px; }
+  .trow .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .trow .pct { color: var(--muted); font-size: 11px; flex: none; }
+  .track { height: 3px; margin-top: 9px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+  .fill { height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, var(--teal), var(--violet)); transition: width .18s ease; }
+
+  .files-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 34px 0 12px; }
+  .files-head h2 { margin: 0; font-size: 16px; font-weight: 500; }
+  .files-head span { font-size: 11px; color: var(--dim); }
+  .empty { padding: 26px 18px; text-align: center; color: var(--dim); font-size: 12.5px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.02); }
+  .list { display: grid; gap: 10px; }
+  .file {
+    display: flex; align-items: center; gap: 13px; padding: 13px 14px; border: 1px solid var(--line);
+    border-radius: 16px; background: rgba(255,255,255,.028);
+  }
+  .badge {
+    flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 9px; letter-spacing: .04em;
+    color: #08110f; font-weight: 700;
+  }
+  .badge.apk { background: linear-gradient(140deg, #83f2df, #43c9b2); }
+  .badge.img { background: linear-gradient(140deg, #f0b57c, #e08b5c); }
+  .badge.vid { background: linear-gradient(140deg, #b69cff, #8a63f4); }
+  .badge.file { background: linear-gradient(140deg, #9bb0c5, #6b7d91); }
+  .meta { min-width: 0; flex: 1; }
+  .meta .n { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .meta .s { margin-top: 1px; font-size: 10.5px; color: var(--dim); }
+  .actions { display: flex; gap: 6px; flex: none; }
+  .act {
+    border: 1px solid var(--line); background: rgba(255,255,255,.04); border-radius: 9px;
+    padding: 6px 10px; font-size: 11px; color: var(--muted);
+  }
+  .act.primary { color: #07100d; background: var(--teal); border-color: transparent; font-weight: 600; }
+  .act.danger { color: var(--danger); }
+  .act:active { transform: scale(.97); }
+
+  .tips { margin: 22px 0 0; padding: 16px 18px; font-size: 11.5px; color: var(--dim); line-height: 1.9; }
+  .tips b { color: var(--muted); font-weight: 500; }
+  .toast {
+    position: fixed; left: 50%; bottom: max(22px, env(safe-area-inset-bottom)); transform: translate(-50%, 16px);
+    padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line-strong);
+    background: rgba(12,17,24,.94); color: var(--text); font-size: 12.5px; opacity: 0; pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease; z-index: 20; max-width: calc(100vw - 40px); text-align: center;
+  }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+  footer { padding: 26px 0 40px; text-align: center; color: var(--dim); font-size: 10px; letter-spacing: .06em; }
+  @media (max-width: 520px) {
+    .wrap { width: calc(100% - 32px); }
+    .file { align-items: flex-start; flex-wrap: wrap; }
+    .actions { margin-left: 53px; }
+    .badge { width: 36px; height: 36px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="bar">
+      <a class="back" href="../"><span>←</span><span>返回电视设置</span></a>
+      <span class="tv"><i class="dot"></i>{{DEVICE}}</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">LOCAL TRANSFER</p>
+    <h1>把文件，送到电视。</h1>
+    <p>手机和电视连在同一个 Wi-Fi 下，选文件或直接拖进来。APK 上传完可以在电视上直接安装。
+      <span class="en">Send APKs, photos, videos and any other file over your local network.</span>
+    </p>
+  </section>
+
+  <label class="drop" id="drop">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 16V5m0 0 4.2 4.2M12 5 7.8 9.2"/><path d="M4.5 15.5v2.2a2.3 2.3 0 0 0 2.3 2.3h10.4a2.3 2.3 0 0 0 2.3-2.3v-2.2"/>
+    </svg>
+    <b>点击选择文件</b>
+    <span>也可以把文件拖到这里 · 支持任意格式</span>
+    <span class="apk">APK 上传后可直接在电视上安装</span>
+    <input id="picker" type="file" multiple>
+  </label>
+
+  <div class="transfer" id="transfer"></div>
+
+  <div class="files-head">
+    <h2>电视上的文件</h2>
+    <span id="room">—</span>
+  </div>
+  <div id="files"></div>
+
+  <div class="tips glass">
+    <b>小提示</b><br>
+    1. 传输过程中请保持这个页面在前台，手机不要锁屏。<br>
+    2. APK 安装时，请在电视上用遥控器确认；如果电视提示「禁止安装未知应用」，按提示允许即可。<br>
+    3. 文件只走局域网，不会上传到互联网。电视重启前都可以在列表里再次安装或打开。<br>
+    4. 传输页地址只显示在电视上，请勿分享给不信任的设备。
+  </div>
+
+  <footer>电视桌面 · 文件传输 · 局域网直连</footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+  const API = '../api/files';
+  const $ = s => document.querySelector(s);
+  let busy = false;
+  let state = { files: [], room: 0 };
+
+  function toast(msg) {
+    const t = $('#toast');
+    t.textContent = msg;
+    t.classList.add('on');
+    clearTimeout(toast.timer);
+    toast.timer = setTimeout(() => t.classList.remove('on'), 2600);
+  }
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+  function size(n) {
+    if (n >= 1024 * 1024 * 1024) return (n / (1024 * 1024 * 1024)).toFixed(2) + ' GB';
+    if (n >= 1024 * 1024) return (n / (1024 * 1024)).toFixed(1) + ' MB';
+    if (n >= 1024) return Math.round(n / 1024) + ' KB';
+    return n + ' B';
+  }
+  function kind(name) {
+    const ext = (name.split('.').pop() || '').toLowerCase();
+    if (ext === 'apk') return 'apk';
+    if (['jpg','jpeg','png','gif','webp','heic','bmp'].includes(ext)) return 'img';
+    if (['mp4','mkv','mov','avi','webm','ts','m3u8'].includes(ext)) return 'vid';
+    return 'file';
+  }
+  function render() {
+    const room = state.room || 0;
+    $('#room').textContent = '剩余 ' + size(room);
+    const box = $('#files');
+    const files = state.files || [];
+    if (!files.length) {
+      box.innerHTML = '<div class="empty">还没有文件。上传的 APK、照片、视频会出现在这里。</div>';
+      return;
+    }
+    box.innerHTML = '<div class="list">' + files.map(f => {
+      const k = kind(f.name);
+      const label = k === 'apk' ? 'APK' : k === 'img' ? 'IMG' : k === 'vid' ? 'VID' : 'FILE';
+      const primary = k === 'apk'
+        ? '<button class="act primary" data-act="install" data-id="' + encodeURIComponent(f.id) + '">安装</button>'
+        : '<button class="act" data-act="open" data-id="' + encodeURIComponent(f.id) + '">打开</button>';
+      return '<div class="file">'
+        + '<span class="badge ' + k + '">' + label + '</span>'
+        + '<span class="meta"><span class="n">' + escapeHtml(f.name) + '</span><span class="s">' + size(f.size) + ' · ' + new Date(f.time).toLocaleString('zh-CN', { hour12: false }) + '</span></span>'
+        + '<span class="actions">' + primary + '<button class="act danger" data-act="delete" data-id="' + encodeURIComponent(f.id) + '">删除</button></span>'
+        + '</div>';
+    }).join('') + '</div>';
+  }
+  async function load() {
+    try {
+      const r = await fetch(API, { cache: 'no-store' });
+      if (!r.ok) throw new Error(r.status);
+      state = await r.json();
+      render();
+    } catch (e) {
+      $('#files').innerHTML = '<div class="empty">读取不到电视上的文件列表，请确认电视和手机在同一个网络。</div>';
+    }
+  }
+  async function post(action, id) {
+    const body = new URLSearchParams({ id: decodeURIComponent(id) });
+    const r = await fetch(API + '/' + action, { method: 'POST', body });
+    if (!r.ok) throw new Error(await r.text());
+    return r.json();
+  }
+
+  $('#files').addEventListener('click', async e => {
+    const b = e.target.closest('button[data-act]');
+    if (!b) return;
+    const id = b.dataset.id;
+    const act = b.dataset.act;
+    if (act === 'delete') {
+      if (!confirm('从电视上删除这个文件？')) return;
+      b.disabled = true;
+      try { state = await post('delete', id); render(); toast('已删除'); }
+      catch (err) { b.disabled = false; toast('删除失败'); }
+      return;
+    }
+    b.disabled = true;
+    try {
+      await post(act, id);
+      toast(act === 'install' ? '已打开电视安装器，请在电视上确认' : '已发送打开请求');
+    } catch (err) {
+      toast(act === 'install' ? '电视没有可用的安装器' : '电视上没有能打开它的应用');
+    } finally {
+      b.disabled = false;
+    }
+  });
+
+  const drop = $('#drop');
+  const picker = $('#picker');
+  ['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('on'); }));
+  ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('on'); }));
+  drop.addEventListener('drop', e => {
+    const files = [...(e.dataTransfer?.files || [])];
+    if (files.length) upload(files);
+  });
+  picker.addEventListener('change', () => {
+    const files = [...picker.files];
+    picker.value = '';
+    if (files.length) upload(files);
+  });
+
+  function upload(files) {
+    if (busy) { toast('正在传输，请稍等'); return; }
+    busy = true;
+    const box = $('#transfer');
+    box.innerHTML = '';
+    const rows = [];
+    let done = 0;
+    function finish() {
+      if (done !== files.length) return;
+      busy = false;
+      setTimeout(() => { box.innerHTML = ''; }, 1400);
+      load();
+    }
+    function next(i) {
+      if (i >= files.length) { finish(); return; }
+      const file = files[i];
+      const row = document.createElement('div');
+      row.className = 'titem';
+      row.innerHTML = '<div class="trow"><span class="name">' + escapeHtml(file.name) + '</span><span class="pct">0%</span></div><div class="track"><div class="fill"></div></div>';
+      box.appendChild(row);
+      rows.push(row);
+      const pct = row.querySelector('.pct');
+      const fill = row.querySelector('.fill');
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', API + '/send?name=' + encodeURIComponent(file.name));
+      xhr.setRequestHeader('Content-Type', 'application/octet-stream');
+      xhr.upload.onprogress = e => {
+        if (!e.lengthComputable) return;
+        const n = Math.round(e.loaded / e.total * 100);
+        pct.textContent = n + '%';
+        fill.style.width = n + '%';
+      };
+      xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          pct.textContent = '完成';
+          fill.style.width = '100%';
+          try {
+            const s = JSON.parse(xhr.responseText);
+            state = s;
+          } catch (e) {}
+        } else {
+          pct.textContent = '失败';
+          fill.style.background = 'var(--danger)';
+        }
+        done++;
+        setTimeout(() => next(i + 1), 120);
+      };
+      xhr.onerror = () => {
+        pct.textContent = '失败';
+        fill.style.background = 'var(--danger)';
+        done++;
+        setTimeout(() => next(i + 1), 300);
+      };
+      xhr.send(file);
+    }
+    next(0);
+  }
+
+  load();
+  setInterval(load, 8000);
+</script>
+</body>
+</html>
