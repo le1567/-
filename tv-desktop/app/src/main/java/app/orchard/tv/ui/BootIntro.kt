@@ -6,36 +6,62 @@ import android.net.Uri
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.VideoView
 import app.orchard.tv.R
+import app.orchard.tv.system.DiagLog
 
 /**
- * The short welcome film a TV shows once after it is switched on: the owner's own clip, over Home
- * for the first seconds of the boot. Any key or tap skips it, and a stuck decoder cannot hold Home
- * after [TIMEOUT_MS]. Nothing is kept: the view goes away with this process, and MainActivity asks
- * for it only on the boot's first real start.
+ * The short welcome film shown when Home starts: the owner's own clip, over Home for the first
+ * seconds. It is a cold-start screen, not a system boot animation. Any key or tap skips it, and a
+ * stuck decoder cannot hold Home after [TIMEOUT_MS].
+ *
+ * The first frame stays behind the film: on a TV whose decoder refuses the file, that picture is
+ * still shown for a moment instead of a black window. [showing] keeps a second Home instance
+ * (the unlock hand-over) from stacking two players.
  */
 object BootIntro {
-    private const val TIMEOUT_MS = 9_000L
+    private const val TIMEOUT_MS = 8_000L
+    @Volatile private var showing = false
 
     fun show(activity: Activity) {
-        if (activity.isFinishing) return
+        if (showing || activity.isFinishing) return
+        showing = true
+        DiagLog.i("boot intro: show")
+
         val root = FrameLayout(activity).apply {
             setBackgroundColor(Color.BLACK)
             isClickable = true
             isFocusable = true
             isFocusableInTouchMode = true
-            contentDescription = "开机动画，按任意键跳过"
+            contentDescription = "进入动画，按任意键跳过"
         }
-        val video = VideoView(activity).apply {
-            setVideoURI(Uri.parse("android.resource://${activity.packageName}/${R.raw.boot_intro}"))
-            setOnPreparedListener { player ->
+        val poster = ImageView(activity).apply {
+            setImageResource(R.drawable.boot_poster)
+            scaleType = ImageView.ScaleType.CENTER_CROP
+        }
+        val video = VideoView(activity).also { v ->
+            v.setVideoURI(Uri.parse("android.resource://${activity.packageName}/${R.raw.boot_intro}"))
+            v.setZOrderOnTop(true)
+            v.setOnPreparedListener { player ->
+                DiagLog.i("boot intro: playing")
                 player.isLooping = false
                 player.start()
             }
-            setOnCompletionListener { remove(activity, root) }
-            setOnErrorListener { _, _, _ -> remove(activity, root); true }
+            v.setOnCompletionListener {
+                DiagLog.i("boot intro: finished")
+                remove(activity, root)
+            }
+            v.setOnErrorListener { _, what, extra ->
+                // The film cannot play on this TV: leave the first frame for a moment, then go.
+                DiagLog.i("boot intro: player error $what/$extra")
+                v.visibility = android.view.View.GONE
+                poster.visibility = android.view.View.VISIBLE
+                root.postDelayed({ remove(activity, root) }, 2_500L)
+                true
+            }
         }
+        root.addView(poster, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         root.addView(video, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER))
         activity.addContentView(root, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         root.requestFocus()
@@ -45,9 +71,10 @@ object BootIntro {
     }
 
     private fun remove(activity: Activity, root: FrameLayout) {
-        if (activity.isFinishing) return
-        val parent = root.parent as? ViewGroup ?: return
-        (root.getChildAt(0) as? VideoView)?.stopPlayback()
-        parent.removeView(root)
+        if (root.parent == null) return
+        (root.getChildAt(1) as? VideoView)?.stopPlayback()
+        (root.parent as? ViewGroup)?.removeView(root)
+        showing = false
+        DiagLog.i("boot intro: hidden")
     }
 }

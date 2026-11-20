@@ -357,8 +357,10 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        // The welcome film belongs to Home's cold start, not to the boot-source feature: the owner
+        // sees it when the app opens, whether that is at power-on or from the launcher later.
+        if (fresh || fromLocked) BootIntro.show(this)
         val firstOfBoot = fresh && firstStartSinceBoot()
-        if (firstOfBoot) BootIntro.show(this)
         if (firstOfBoot) openBootSource("boot")
         if (intent.getBooleanExtra(EXTRA_WOKE, false)) openBootSource("brought back on wake")
         if (intent.getBooleanExtra(EXTRA_REOPEN_BOOT, false)) openBootSource("covered by the stock launcher", again = true)
