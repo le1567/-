@@ -3,6 +3,7 @@ package app.orchard.tv.ui
 import android.app.Activity
 import android.graphics.Color
 import android.net.Uri
+import android.os.SystemClock
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -22,11 +23,16 @@ import app.orchard.tv.system.DiagLog
  */
 object BootIntro {
     private const val TIMEOUT_MS = 8_000L
+    /** Two resumes for one launch (Home handled, then focus) must not queue two films. */
+    private const val MIN_GAP_MS = 1_500L
     @Volatile private var showing = false
+    @Volatile private var lastShownAt = 0L
 
     fun show(activity: Activity) {
-        if (showing || activity.isFinishing) return
+        val now = SystemClock.elapsedRealtime()
+        if (showing || now - lastShownAt < MIN_GAP_MS || activity.isFinishing) return
         showing = true
+        lastShownAt = now
         DiagLog.i("boot intro: show")
 
         val root = FrameLayout(activity).apply {

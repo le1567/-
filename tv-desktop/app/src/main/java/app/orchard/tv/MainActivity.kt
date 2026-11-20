@@ -359,7 +359,6 @@ class MainActivity : ComponentActivity() {
         }
         // The welcome film belongs to Home's cold start, not to the boot-source feature: the owner
         // sees it when the app opens, whether that is at power-on or from the launcher later.
-        if (fresh || fromLocked) BootIntro.show(this)
         val firstOfBoot = fresh && firstStartSinceBoot()
         if (firstOfBoot) openBootSource("boot")
         if (intent.getBooleanExtra(EXTRA_WOKE, false)) openBootSource("brought back on wake")
@@ -1021,6 +1020,9 @@ class MainActivity : ComponentActivity() {
     /** What onResume does once the user is unlocked; also run by a start that was locked before. */
     private fun resumeWork() {
         vm.resumed = true
+        // Every time Home comes back in front, not once per process: the owner asked for an
+        // opening film on each app launch. A film already playing is not started twice.
+        if (!vm.screensaverVisible) BootIntro.show(this)
         CecSwitch.register(this)
         if (!minuteReceiverOn) {
             // TIME_TICK is a protected system broadcast; it is only delivered to registered receivers.
