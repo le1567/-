@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-<title>Aerial</title>
+<title>电视桌面</title>
 <style>
   :root {
     --bg: #f2f2f7; --card: #ffffff; --label: #000; --secondary: rgba(60,60,67,.6); --tertiary: rgba(60,60,67,.3);
@@ -349,7 +349,7 @@
 
 <!-- More -->
 <section data-tab="more" hidden>
-  <a class="item tint center" href="files/" style="text-decoration:none;margin-bottom:10px">文件传输 · File Transfer</a>
+  <a class="item tint center" id="filesLink" href="files/" style="text-decoration:none;margin-bottom:10px">文件传输 · File Transfer</a>
   <h2 data-i18n="focus"></h2>
   <div class="list" id="focus" role="radiogroup" data-i18n-aria-label="focus">
     <button class="item" role="radio" data-style="high_contrast"><span class="txt"><span data-i18n="focus_high"></span><span class="sub" data-i18n="focus_hint_high"></span></span><svg class="tick" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
@@ -405,6 +405,9 @@
 const base = location.pathname.replace(/\/?$/, '/');
 const $ = s => document.querySelector(s);
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+// The transfer page keeps the token in the path: build its address from base, not from a bare
+// relative link, so a bookmark without the trailing slash still works.
+$('#filesLink').href = base + 'files/';
 let state = null, stateJson = '';
 
 // The language: ?lang=ru in the address, else the one picked under More (kept on the phone), else the
