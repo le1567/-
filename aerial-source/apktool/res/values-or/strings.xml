@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">ଅଟୋଫିଲ</string>
+    <string name="close_drawer">ନାଭିଗେସନ୍ ମେନୁ ବନ୍ଦ କରନ୍ତୁ</string>
+    <string name="close_sheet">ସିଟ୍ ବନ୍ଦ କରନ୍ତୁ</string>
+    <string name="default_error_message">ଅବୈଧ ଇନପୁଟ୍</string>
+    <string name="default_popup_window_title">ପପ୍-ଅପ୍ ୱିଣ୍ଡୋ</string>
+    <string name="in_progress">ଚାଲିଛି</string>
+    <string name="indeterminate">ଆଶିଂକ ଭାବେ ଯାଞ୍ଚ କରାଯାଇଛି</string>
+    <string name="not_selected">ଚୟନ କରାଯାଇନାହିଁ</string>
+    <string name="range_end">ରେଞ୍ଜ ଶେଷ</string>
+    <string name="range_start">ରେଞ୍ଜ ଆରମ୍ଭ</string>
+    <string name="selected">ଚୟନିତ</string>
+    <string name="state_empty">ଖାଲି</string>
+    <string name="state_off">ବନ୍ଦ ଅଛି</string>
+    <string name="state_on">ଚାଲୁ ଅଛି</string>
+    <string name="switch_role">ସ୍ୱିଚ କରନ୍ତୁ</string>
+    <string name="template_percent">ଶତକଡ଼ା %1$d।</string>
+</resources>

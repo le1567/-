@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">الملء التلقائي</string>
+    <string name="close_drawer">إغلاق قائمة التنقل</string>
+    <string name="close_sheet">إغلاق الورقة</string>
+    <string name="default_error_message">إدخال غير صالح</string>
+    <string name="default_popup_window_title">نافذة منبثقة</string>
+    <string name="in_progress">قيد التقدم</string>
+    <string name="indeterminate">تم وضع علامة في المربّع بشكل جزئي</string>
+    <string name="not_selected">غير محدّد</string>
+    <string name="range_end">نهاية النطاق</string>
+    <string name="range_start">بداية النطاق</string>
+    <string name="selected">محدّد</string>
+    <string name="state_empty">حقل فارغ</string>
+    <string name="state_off">غير مفعَّل</string>
+    <string name="state_on">مفعَّل</string>
+    <string name="switch_role">تبديل</string>
+    <string name="template_percent">%1$d في المئة.</string>
+</resources>

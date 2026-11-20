@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">Autouzupełnianie</string>
+    <string name="close_drawer">Zamknij menu nawigacyjne</string>
+    <string name="close_sheet">Zamknij arkusz</string>
+    <string name="default_error_message">Nieprawidłowe dane wejściowe</string>
+    <string name="default_popup_window_title">Wyskakujące okienko</string>
+    <string name="in_progress">W toku</string>
+    <string name="indeterminate">Częściowo zaznaczone</string>
+    <string name="not_selected">Nie wybrano</string>
+    <string name="range_end">Koniec zakresu</string>
+    <string name="range_start">Początek zakresu</string>
+    <string name="selected">Wybrano</string>
+    <string name="state_empty">Puste</string>
+    <string name="state_off">Wyłączono</string>
+    <string name="state_on">Włączono</string>
+    <string name="switch_role">Przełącznik</string>
+    <string name="template_percent">%1$d procent.</string>
+</resources>

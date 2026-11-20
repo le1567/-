@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">ఆటోఫిల్</string>
+    <string name="close_drawer">నావిగేషన్ మెనూను మూసివేయండి</string>
+    <string name="close_sheet">షీట్‌ను మూసివేయండి</string>
+    <string name="default_error_message">ఇన్‌పుట్ చెల్లదు</string>
+    <string name="default_popup_window_title">పాప్-అప్ విండో</string>
+    <string name="in_progress">ప్రోగ్రెస్‌లో ఉంది</string>
+    <string name="indeterminate">పాక్షికంగా ఎంచుకోబడింది</string>
+    <string name="not_selected">ఎంచుకోబడలేదు</string>
+    <string name="range_end">పరిధి ముగిసింది</string>
+    <string name="range_start">పరిధి ప్రారంభమయింది</string>
+    <string name="selected">ఎంచుకోబడింది</string>
+    <string name="state_empty">ఖాళీగా ఉంది</string>
+    <string name="state_off">ఆఫ్‌లో ఉంది</string>
+    <string name="state_on">ఆన్‌లో ఉంది</string>
+    <string name="switch_role">Switch</string>
+    <string name="template_percent">%1$d శాతం.</string>
+</resources>

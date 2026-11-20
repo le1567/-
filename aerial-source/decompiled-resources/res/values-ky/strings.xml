@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">Автотолтуруу функиясы</string>
+    <string name="close_drawer">Чабыттоо менюсун жабуу</string>
+    <string name="close_sheet">Баракты жабуу</string>
+    <string name="default_error_message">Киргизилген маалымат жараксыз</string>
+    <string name="default_popup_window_title">Калкыма терезе</string>
+    <string name="in_progress">Аткарылууда</string>
+    <string name="indeterminate">Жарым-жартылай текшерилди</string>
+    <string name="not_selected">Тандалган жок</string>
+    <string name="range_end">Диапазондун аягы</string>
+    <string name="range_start">Диапазондун башы</string>
+    <string name="selected">Тандалды</string>
+    <string name="state_empty">Бош</string>
+    <string name="state_off">Өчүк</string>
+    <string name="state_on">Күйүк</string>
+    <string name="switch_role">Которгуч</string>
+    <string name="template_percent">%1$d пайыз.</string>
+</resources>

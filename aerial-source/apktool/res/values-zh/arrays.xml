@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="folder_names">
+        <item>系统应用</item>
+        <item>影视</item>
+        <item>音乐</item>
+        <item>游戏</item>
+        <item>儿童</item>
+        <item>工具</item>
+        <item>文件夹</item>
+    </string-array>
+</resources>

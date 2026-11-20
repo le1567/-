@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">ป้อนข้อความอัตโนมัติ</string>
+    <string name="close_drawer">ปิดเมนูการนำทาง</string>
+    <string name="close_sheet">ปิดชีต</string>
+    <string name="default_error_message">อินพุตไม่ถูกต้อง</string>
+    <string name="default_popup_window_title">หน้าต่างป๊อปอัป</string>
+    <string name="in_progress">กำลังดำเนินการ</string>
+    <string name="indeterminate">เลือกบางส่วน</string>
+    <string name="not_selected">ไม่ได้เลือก</string>
+    <string name="range_end">จุดสิ้นสุดของช่วง</string>
+    <string name="range_start">จุดเริ่มต้นของช่วง</string>
+    <string name="selected">เลือกไว้</string>
+    <string name="state_empty">ว่าง</string>
+    <string name="state_off">ปิดอยู่</string>
+    <string name="state_on">เปิดอยู่</string>
+    <string name="switch_role">เปลี่ยน</string>
+    <string name="template_percent">%1$d เปอร์เซ็นต์</string>
+</resources>

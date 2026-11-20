@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">ऑटोमैटिक तरीके से भरें</string>
+    <string name="close_drawer">नेविगेशन मेन्यू बंद करें</string>
+    <string name="close_sheet">शीट बंद करें</string>
+    <string name="default_error_message">अमान्य इनपुट</string>
+    <string name="default_popup_window_title">पॉप-अप विंडो</string>
+    <string name="in_progress">जारी है</string>
+    <string name="indeterminate">कुछ विकल्पों को चुना गया</string>
+    <string name="not_selected">नहीं चुना गया</string>
+    <string name="range_end">रेंज की सीमा</string>
+    <string name="range_start">रेंज की शुरुआत</string>
+    <string name="selected">चुना गया</string>
+    <string name="state_empty">कोई भी तार नहीं लगा है</string>
+    <string name="state_off">बंद है</string>
+    <string name="state_on">चालू है</string>
+    <string name="switch_role">स्विच करें</string>
+    <string name="template_percent">%1$d प्रतिशत.</string>
+</resources>

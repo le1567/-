@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">Otomatik doldurma</string>
+    <string name="close_drawer">Gezinme menüsünü kapat</string>
+    <string name="close_sheet">Sayfayı kapat</string>
+    <string name="default_error_message">Geçersiz giriş</string>
+    <string name="default_popup_window_title">Pop-up Pencere</string>
+    <string name="in_progress">Devam ediyor</string>
+    <string name="indeterminate">Kısmi olarak kontrol edildi</string>
+    <string name="not_selected">Seçili değil</string>
+    <string name="range_end">Aralık sonu</string>
+    <string name="range_start">Aralık başlangıcı</string>
+    <string name="selected">Seçili</string>
+    <string name="state_empty">Boş</string>
+    <string name="state_off">Kapalı</string>
+    <string name="state_on">Açık</string>
+    <string name="switch_role">Anahtar</string>
+    <string name="template_percent">Yüzde %1$d.</string>
+</resources>

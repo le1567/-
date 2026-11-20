@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">sylvan.apple.com</domain>
+        <trust-anchors>
+            <certificates src="@raw/apple_root_ca" />
+            <certificates src="system" />
+        </trust-anchors>
+    </domain-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">api.open-meteo.com</domain>
+        <domain includeSubdomains="false">geocoding-api.open-meteo.com</domain>
+        <domain includeSubdomains="false">ipinfo.io</domain>
+        <domain includeSubdomains="false">ipwho.is</domain>
+        <domain includeSubdomains="false">ipv4.icanhazip.com</domain>
+    </domain-config>
+</network-security-config>

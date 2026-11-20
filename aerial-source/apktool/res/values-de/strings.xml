@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">Automatisch ausfüllen</string>
+    <string name="close_drawer">Navigationsmenü schließen</string>
+    <string name="close_sheet">Tabelle schließen</string>
+    <string name="default_error_message">Ungültige Eingabe</string>
+    <string name="default_popup_window_title">Pop-up-Fenster</string>
+    <string name="in_progress">In Bearbeitung</string>
+    <string name="indeterminate">Teilweise aktiviert</string>
+    <string name="not_selected">Nicht ausgewählt</string>
+    <string name="range_end">Bereichsende</string>
+    <string name="range_start">Bereichsstart</string>
+    <string name="selected">Ausgewählt</string>
+    <string name="state_empty">Leer</string>
+    <string name="state_off">Aus</string>
+    <string name="state_on">An</string>
+    <string name="switch_role">Wechseln</string>
+    <string name="template_percent">%1$d Prozent.</string>
+</resources>

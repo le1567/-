@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">Αυτόματη συμπλήρωση</string>
+    <string name="close_drawer">Κλείσιμο του μενού πλοήγησης</string>
+    <string name="close_sheet">Κλείσιμο φύλλου</string>
+    <string name="default_error_message">Μη έγκυρη καταχώριση</string>
+    <string name="default_popup_window_title">Αναδυόμενο παράθυρο</string>
+    <string name="in_progress">Σε εξέλιξη</string>
+    <string name="indeterminate">Έγινε μερικός έλεγχος</string>
+    <string name="not_selected">Δεν έχει επιλεχθεί</string>
+    <string name="range_end">Τέλος εύρους</string>
+    <string name="range_start">Αρχή εύρους</string>
+    <string name="selected">Επιλεγμένο</string>
+    <string name="state_empty">Κενό</string>
+    <string name="state_off">Ανενεργός</string>
+    <string name="state_on">Ενεργός</string>
+    <string name="switch_role">Εναλλαγή</string>
+    <string name="template_percent">%1$d τοις εκατό.</string>
+</resources>

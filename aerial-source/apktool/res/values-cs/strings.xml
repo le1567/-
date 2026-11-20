@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">Automatické vyplňování</string>
+    <string name="close_drawer">Zavřít navigační panel</string>
+    <string name="close_sheet">Zavřít sešit</string>
+    <string name="default_error_message">Neplatný údaj</string>
+    <string name="default_popup_window_title">Vyskakovací okno</string>
+    <string name="in_progress">Probíhá</string>
+    <string name="indeterminate">Částečně zaškrtnuto</string>
+    <string name="not_selected">Nevybráno</string>
+    <string name="range_end">Konec rozsahu</string>
+    <string name="range_start">Začátek rozsahu</string>
+    <string name="selected">Vybráno</string>
+    <string name="state_empty">Prázdné</string>
+    <string name="state_off">Vypnuto</string>
+    <string name="state_on">Zapnuto</string>
+    <string name="switch_role">Přepnout</string>
+    <string name="template_percent">%1$d procent.</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">自動填入</string>
+    <string name="close_drawer">關閉導覽選單</string>
+    <string name="close_sheet">關閉功能表</string>
+    <string name="default_error_message">輸入內容無效</string>
+    <string name="default_popup_window_title">彈出式視窗</string>
+    <string name="in_progress">處理中</string>
+    <string name="indeterminate">部分檢查</string>
+    <string name="not_selected">未選取</string>
+    <string name="range_end">範圍終點</string>
+    <string name="range_start">範圍起點</string>
+    <string name="selected">已選取</string>
+    <string name="state_empty">空白</string>
+    <string name="state_off">已關閉</string>
+    <string name="state_on">已開啟</string>
+    <string name="switch_role">切換鈕</string>
+    <string name="template_percent">百分之 %1$d。</string>
+</resources>

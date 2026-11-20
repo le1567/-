@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">ಆಟೋಫಿಲ್</string>
+    <string name="close_drawer">ನ್ಯಾವಿಗೇಷನ್‌ ಮೆನು ಮುಚ್ಚಿರಿ</string>
+    <string name="close_sheet">ಶೀಟ್ ಮುಚ್ಚಿರಿ</string>
+    <string name="default_error_message">ಅಮಾನ್ಯ ಇನ್‌ಪುಟ್</string>
+    <string name="default_popup_window_title">ಪಾಪ್-ಅಪ್ ವಿಂಡೋ</string>
+    <string name="in_progress">ಪ್ರಗತಿಯಲ್ಲಿದೆ</string>
+    <string name="indeterminate">ಭಾಗಶಃ ಪರೀಕ್ಷಿಸಲಾಗಿದೆ</string>
+    <string name="not_selected">ಆಯ್ಕೆ ಮಾಡಿಲ್ಲ</string>
+    <string name="range_end">ಶ್ರೇಣಿಯ ಅಂತ್ಯ</string>
+    <string name="range_start">ಶ್ರೇಣಿಯ ಪ್ರಾರಂಭ</string>
+    <string name="selected">ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ</string>
+    <string name="state_empty">ಖಾಲಿ</string>
+    <string name="state_off">ಆಫ್ ಆಗಿದೆ</string>
+    <string name="state_on">ಆನ್ ಆಗಿದೆ</string>
+    <string name="switch_role">ಬದಲಿಸಿ</string>
+    <string name="template_percent">%1$d ಶೇಕಡಾ.</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="folder_names">
+        <item>System</item>
+        <item>Video</item>
+        <item>Music</item>
+        <item>Games</item>
+        <item>Kids</item>
+        <item>Tools</item>
+        <item>Folder</item>
+    </array>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">Автоматично попълване</string>
+    <string name="close_drawer">Затваряне на менюто за навигация</string>
+    <string name="close_sheet">Затваряне на таблицата</string>
+    <string name="default_error_message">Въведеното е невалидно</string>
+    <string name="default_popup_window_title">Изскачащ прозорец</string>
+    <string name="in_progress">В ход</string>
+    <string name="indeterminate">Частично отметнато</string>
+    <string name="not_selected">Не е избрано</string>
+    <string name="range_end">Край на обхвата</string>
+    <string name="range_start">Начало на обхвата</string>
+    <string name="selected">Избрано</string>
+    <string name="state_empty">Празно</string>
+    <string name="state_off">Изключено</string>
+    <string name="state_on">Включено</string>
+    <string name="switch_role">Превключване</string>
+    <string name="template_percent">%1$d процента.</string>
+</resources>

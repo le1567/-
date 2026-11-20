@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">Automatické dopĺňanie</string>
+    <string name="close_drawer">Zavrieť navigačnú ponuku</string>
+    <string name="close_sheet">Zavrieť hárok</string>
+    <string name="default_error_message">Neplatný vstup</string>
+    <string name="default_popup_window_title">Vyskakovacie okno</string>
+    <string name="in_progress">Prebieha</string>
+    <string name="indeterminate">Čiastočne začiarknuté</string>
+    <string name="not_selected">Nevybrané</string>
+    <string name="range_end">Koniec rozsahu</string>
+    <string name="range_start">Začiatok rozsahu</string>
+    <string name="selected">Vybrané</string>
+    <string name="state_empty">Prázdne</string>
+    <string name="state_off">Vypnuté</string>
+    <string name="state_on">Zapnuté</string>
+    <string name="switch_role">Prepnúť</string>
+    <string name="template_percent">%1$d %%</string>
+</resources>

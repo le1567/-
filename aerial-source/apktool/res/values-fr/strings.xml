@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">Saisie automatique</string>
+    <string name="close_drawer">Fermer le menu de navigation</string>
+    <string name="close_sheet">Fermer la feuille</string>
+    <string name="default_error_message">Données incorrectes</string>
+    <string name="default_popup_window_title">Fenêtre pop-up</string>
+    <string name="in_progress">En cours</string>
+    <string name="indeterminate">Partiellement coché</string>
+    <string name="not_selected">Non sélectionné</string>
+    <string name="range_end">Fin de plage</string>
+    <string name="range_start">Début de plage</string>
+    <string name="selected">Sélectionné</string>
+    <string name="state_empty">Vide</string>
+    <string name="state_off">Désactivé</string>
+    <string name="state_on">Activé</string>
+    <string name="switch_role">Changer</string>
+    <string name="template_percent">%1$d pour cent.</string>
+</resources>

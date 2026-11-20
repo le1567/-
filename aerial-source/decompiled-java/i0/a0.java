@@ -1,0 +1,9 @@
+package i0;
+
+/* compiled from: r8-map-id-133b242b092d1a7804ddbbfea89ec2448dabf6a5e0d97a31abd57b171a3f8e87 */
+/* loaded from: classes.dex */
+public interface a0 {
+    boolean b(Object obj, Object obj2);
+
+    void c(i.P p4);
+}

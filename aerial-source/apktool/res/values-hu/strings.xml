@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">Automatikus kitöltés</string>
+    <string name="close_drawer">Navigációs menü bezárása</string>
+    <string name="close_sheet">Munkalap bezárása</string>
+    <string name="default_error_message">Érvénytelen adat</string>
+    <string name="default_popup_window_title">Előugró ablak</string>
+    <string name="in_progress">Folyamatban</string>
+    <string name="indeterminate">Részlegesen ellenőrizve</string>
+    <string name="not_selected">Nincs kijelölve</string>
+    <string name="range_end">Tartomány vége</string>
+    <string name="range_start">Tartomány kezdete</string>
+    <string name="selected">Kijelölve</string>
+    <string name="state_empty">Üres</string>
+    <string name="state_off">Ki</string>
+    <string name="state_on">Be</string>
+    <string name="switch_role">Kapcsoló</string>
+    <string name="template_percent">%1$d százalék.</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">تکمیل خودکار</string>
+    <string name="close_drawer">بستن منوی پیمایش</string>
+    <string name="close_sheet">بستن برگ</string>
+    <string name="default_error_message">ورودی نامعتبر</string>
+    <string name="default_popup_window_title">پنجره بالاپر</string>
+    <string name="in_progress">درحال انجام</string>
+    <string name="indeterminate">ناقص علامت زده‌شده</string>
+    <string name="not_selected">انتخاب‌نشده</string>
+    <string name="range_end">پایان محدوده</string>
+    <string name="range_start">شروع محدوده</string>
+    <string name="selected">انتخاب شد</string>
+    <string name="state_empty">خالی</string>
+    <string name="state_off">خاموش</string>
+    <string name="state_on">روشن</string>
+    <string name="switch_role">کلید</string>
+    <string name="template_percent">%1$d درصد.</string>
+</resources>

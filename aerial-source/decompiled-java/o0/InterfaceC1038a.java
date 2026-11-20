@@ -1,0 +1,12 @@
+package o0;
+
+import Q.c;
+import k0.InterfaceC0837h;
+import k0.e0;
+
+/* compiled from: r8-map-id-133b242b092d1a7804ddbbfea89ec2448dabf6a5e0d97a31abd57b171a3f8e87 */
+/* renamed from: o0.a, reason: case insensitive filesystem */
+/* loaded from: classes.dex */
+public interface InterfaceC1038a extends InterfaceC0837h {
+    Object N(e0 e0Var, c cVar, Y2.c cVar2);
+}

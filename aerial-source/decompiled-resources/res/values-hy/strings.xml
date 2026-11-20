@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">Ինքնալրացում</string>
+    <string name="close_drawer">Փակել նավիգացիայի ընտրացանկը</string>
+    <string name="close_sheet">Փակել թերթը</string>
+    <string name="default_error_message">Սխալ ներածում</string>
+    <string name="default_popup_window_title">Ելնող պատուհան</string>
+    <string name="in_progress">Ընթացքում է</string>
+    <string name="indeterminate">Մասնակի նշված</string>
+    <string name="not_selected">Ընտրված չէ</string>
+    <string name="range_end">Ընդգրկույթի վերջ</string>
+    <string name="range_start">Ընդգրկույթի սկիզբ</string>
+    <string name="selected">Ընտրված է</string>
+    <string name="state_empty">Դատարկ</string>
+    <string name="state_off">Անջատված է</string>
+    <string name="state_on">Միացված է</string>
+    <string name="switch_role">Փոխանջատիչ</string>
+    <string name="template_percent">%1$d տոկոս։</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="autofill">Betetze automatikoa</string>
+    <string name="close_drawer">Itxi nabigazio-menua</string>
+    <string name="close_sheet">Itxi orria</string>
+    <string name="default_error_message">Sarrerak ez du balio</string>
+    <string name="default_popup_window_title">Leiho gainerakorra</string>
+    <string name="in_progress">Abian</string>
+    <string name="indeterminate">Erdi-markatuta</string>
+    <string name="not_selected">Hautatu gabe</string>
+    <string name="range_end">Barrutiaren amaiera</string>
+    <string name="range_start">Barrutiaren hasiera</string>
+    <string name="selected">Hautatuta</string>
+    <string name="state_empty">Hutsik</string>
+    <string name="state_off">Desaktibatuta</string>
+    <string name="state_on">Aktibatuta</string>
+    <string name="switch_role">Aldatu</string>
+    <string name="template_percent">Ehuneko %1$d.</string>
+</resources>
