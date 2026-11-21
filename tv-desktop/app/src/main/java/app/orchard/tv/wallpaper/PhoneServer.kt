@@ -294,36 +294,40 @@ class PhoneServer private constructor(private val context: Context, private val 
     /** Copy the request body to a file; the browser sends the bytes, not a multipart form, so a 1 GB APK never sits in memory. */
     private fun receiveFile(session: IHTTPSession): Response {
         val length = session.headers["content-length"]?.toLongOrNull() ?: -1L
-        if (length <= 0) return text(Response.Status.BAD_REQUEST, "length required")
-        if (length > MAX_FILE) return text(Response.Status.BAD_REQUEST, "too large")
+        // No length means chunked or a truncated request: refuse it and close, so the rest of the
+        // body is not read as the next request.
+        if (length <= 0) return text(Response.Status.BAD_REQUEST, "length required").also { r -> r.closeConnection(true) }
+        if (length > MAX_FILE) return text(Response.Status.BAD_REQUEST, "too large").also { r -> r.closeConnection(true) }
         val dir = transferDir()
         val room = dir.usableSpace
         // A few firmwares report 0 for a directory whose free space they cannot read; do not block
         // every transfer there, only when the number is real and too small.
-        if (room > 0 && length > room - MIN_FREE) return text(Response.Status.BAD_REQUEST, "no room")
+        if (room > 0 && length > room - MIN_FREE) return text(Response.Status.BAD_REQUEST, "no room").also { r -> r.closeConnection(true) }
         val name = safeName(session.parameters["name"]?.firstOrNull().orEmpty())
         val target = uniqueFile(dir, name)
         var written = 0L
+        // The session's input stream is the socket itself: closing it (as .use would) closes the
+        // connection before NanoHTTPD can write the reply, and the phone reports a failed upload
+        // even though the file arrived. Only the file's own stream is closed here.
+        val input = session.inputStream
         try {
-            session.inputStream.use { input ->
-                target.outputStream().use { output ->
-                    val buffer = ByteArray(64 * 1024)
-                    while (written < length) {
-                        val read = input.read(buffer, 0, minOf(buffer.size.toLong(), length - written).toInt())
-                        if (read < 0) break
-                        output.write(buffer, 0, read)
-                        written += read
-                    }
+            target.outputStream().use { output ->
+                val buffer = ByteArray(64 * 1024)
+                while (written < length) {
+                    val read = input.read(buffer, 0, minOf(buffer.size.toLong(), length - written).toInt())
+                    if (read < 0) break
+                    output.write(buffer, 0, read)
+                    written += read
                 }
             }
         } catch (e: Exception) {
             Log.w(TAG, "file transfer failed", e)
             target.delete()
-            return text(Response.Status.BAD_REQUEST, "write failed")
+            return text(Response.Status.BAD_REQUEST, "write failed").also { r -> r.closeConnection(true) }
         }
         if (written != length) {
             target.delete()
-            return text(Response.Status.BAD_REQUEST, "incomplete")
+            return text(Response.Status.BAD_REQUEST, "incomplete").also { r -> r.closeConnection(true) }
         }
         return json(filesState().put("saved", true).put("id", target.name))
     }

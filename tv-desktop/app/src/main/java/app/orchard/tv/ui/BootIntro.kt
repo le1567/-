@@ -19,19 +19,23 @@ import app.orchard.tv.system.DiagLog
  *
  * The first frame stays behind the film: on a TV whose decoder refuses the file, that picture is
  * still shown for a moment instead of a black window. [showing] keeps a second Home instance
- * (the unlock hand-over) from stacking two players.
+ * (the unlock hand-over) from stacking two players, and [played] keeps the film to the launch
+ * itself: Home is the launcher and stays alive, so coming back from an app must not replay it.
  */
 object BootIntro {
     private const val TIMEOUT_MS = 8_000L
     /** Two resumes for one launch (Home handled, then focus) must not queue two films. */
     private const val MIN_GAP_MS = 1_500L
     @Volatile private var showing = false
+    /** Once per process: the app's launch, not every return to Home. */
+    @Volatile private var played = false
     @Volatile private var lastShownAt = 0L
 
     fun show(activity: Activity) {
         val now = SystemClock.elapsedRealtime()
-        if (showing || now - lastShownAt < MIN_GAP_MS || activity.isFinishing) return
+        if (played || showing || now - lastShownAt < MIN_GAP_MS || activity.isFinishing) return
         showing = true
+        played = true
         lastShownAt = now
         DiagLog.i("boot intro: show")
 
@@ -52,6 +56,8 @@ object BootIntro {
             v.setOnPreparedListener { player ->
                 DiagLog.i("boot intro: playing")
                 player.isLooping = false
+                // The welcome film is silent: the clip's audio track is muted, not removed.
+                player.setVolume(0f, 0f)
                 player.start()
             }
             v.setOnCompletionListener {

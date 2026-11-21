@@ -1020,8 +1020,8 @@ class MainActivity : ComponentActivity() {
     /** What onResume does once the user is unlocked; also run by a start that was locked before. */
     private fun resumeWork() {
         vm.resumed = true
-        // Every time Home comes back in front, not once per process: the owner asked for an
-        // opening film on each app launch. A film already playing is not started twice.
+        // The welcome film belongs to the app's own launch: BootIntro shows it once per process,
+        // not on every return to Home (Aerial stays alive as the launcher).
         if (!vm.screensaverVisible) BootIntro.show(this)
         CecSwitch.register(this)
         if (!minuteReceiverOn) {
