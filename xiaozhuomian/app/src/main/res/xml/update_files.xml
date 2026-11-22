@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The downloaded update, handed to the system installer (update/Updates.kt); and files sent from
+     the phone to the file transfer page, which the TV opens or installs. -->
+<paths>
+    <cache-path name="updates" path="updates/" />
+    <external-files-path name="transfer" path="transfer/" />
+    <files-path name="transfer_internal" path="transfer/" />
+</paths>
