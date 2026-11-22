@@ -86,7 +86,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.orchard.tv.CcPage
-import app.orchard.tv.BuildConfig
 import app.orchard.tv.HomeViewModel
 import app.orchard.tv.Overlay
 import app.orchard.tv.R
@@ -453,12 +452,6 @@ private fun UpdatePage(vm: HomeViewModel, takeFocus: Boolean) {
     }
     DisposableEffect(Unit) { onDispose { Updates.resetInstall() } }
     val canInstall = remember { Updates.canInstall(context) }
-    var qr by remember { mutableStateOf<ImageBitmap?>(null) }
-    LaunchedEffect(Unit) {
-        val ip = PhoneServer.lanAddress(context)
-        val url = "https://aerial.qust.me/update/#v=${Updates.current}&f=${BuildConfig.FLAVOR}" + (ip?.let { "&tv=$it" } ?: "")
-        qr = withContext(Dispatchers.Default) { PhoneServer.qr(url).asImageBitmap() }
-    }
     Column {
         MenuRow(
             Glyph.ChevronLeft, stringResource(R.string.cc_update_title, Updates.available ?: Updates.current),
@@ -502,20 +495,6 @@ private fun UpdatePage(vm: HomeViewModel, takeFocus: Boolean) {
         Updates.notes.takeIf { it.isNotEmpty() }?.let { notes ->
             Spacer(Modifier.height(10.dp))
             UpdateNotes(notes)
-        }
-        Column(Modifier.padding(horizontal = 14.dp)) {
-            Spacer(Modifier.height(16.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(Modifier.size(104.dp).smoothBackground(Color.White, 12.dp).padding(8.dp)) {
-                    qr?.let { Image(it, contentDescription = null, contentScale = ContentScale.Fit, filterQuality = FilterQuality.None, modifier = Modifier.fillMaxSize()) }
-                }
-                Spacer(Modifier.width(16.dp))
-                Column(Modifier.weight(1f)) {
-                    BasicText(stringResource(if (canInstall) R.string.cc_update_scan_else else R.string.cc_update_scan), style = Type.Body)
-                    Spacer(Modifier.height(6.dp))
-                    BasicText(stringResource(R.string.cc_update_keeps), style = Type.Caption)
-                }
-            }
         }
     }
 }
@@ -605,29 +584,12 @@ private fun SetupPage(vm: HomeViewModel, takeFocus: Boolean, onOpen: (android.co
     val guard = remember { SystemProbe.guardSettingsIntent(context) }
     val home = remember { SystemProbe.homeSettingsIntent(context) }
     val revival = remember { SystemProbe.revivalSettingsIntent(context) }
-    var qr by remember { mutableStateOf<ImageBitmap?>(null) }
-    LaunchedEffect(Unit) {
-        val ip = PhoneServer.lanAddress(context)
-        val url = "https://aerial.qust.me/update/#setup=1&v=${Updates.current}&f=${BuildConfig.FLAVOR}" + (ip?.let { "&tv=$it" } ?: "")
-        qr = withContext(Dispatchers.Default) { PhoneServer.qr(url).asImageBitmap() }
-    }
     Column {
         MenuRow(Glyph.ChevronLeft, stringResource(R.string.cc_setup_title), focusRequester = first, onClick = { vm.overlay = Overlay.ControlCenter(CcPage.Main) })
         BasicText(stringResource(R.string.cc_setup_body), style = Type.Caption, modifier = Modifier.padding(horizontal = 14.dp, vertical = 6.dp))
         guard?.let { MenuRow(Glyph.Shield, stringResource(R.string.cc_setup_guard), onClick = { vm.whenUnlocked { onOpen(it) } }, trailing = stringResource(R.string.cc_setup_guard_where) + " ›") }
         home?.let { MenuRow(Glyph.Check, stringResource(R.string.cc_setup_home), onClick = { vm.whenUnlocked { onOpen(it) } }, trailing = "›") }
         revival?.let { MenuRow(Glyph.Moon, stringResource(R.string.cc_setup_revival), onClick = { vm.whenUnlocked { onOpen(it) } }, trailing = stringResource(R.string.cc_setup_revival_where) + " ›") }
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(start = 14.dp, end = 14.dp, top = 14.dp)) {
-            Box(Modifier.size(104.dp).smoothBackground(Color.White, 12.dp).padding(8.dp)) {
-                qr?.let { Image(it, contentDescription = null, contentScale = ContentScale.Fit, filterQuality = FilterQuality.None, modifier = Modifier.fillMaxSize()) }
-            }
-            Spacer(Modifier.width(16.dp))
-            Column(Modifier.weight(1f)) {
-                BasicText(stringResource(R.string.cc_setup_scan), style = Type.Body)
-                Spacer(Modifier.height(6.dp))
-                BasicText(stringResource(R.string.cc_setup_scan_hint), style = Type.Caption)
-            }
-        }
     }
 }
 

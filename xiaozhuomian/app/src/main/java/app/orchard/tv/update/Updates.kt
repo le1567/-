@@ -48,8 +48,8 @@ import java.util.Locale
 object Updates {
     private const val TAG = "AerialUpdates"
     private const val PREFS = "updates"
-    private const val VERSION_URL = "https://aerial.qust.me/download/version.txt"
-    private const val NOTES_URL = "https://aerial.qust.me/download/notes.json"
+    // This build has no update source: the original author's server and GitHub releases are not
+    // contacted, so 小桌面 is never offered an Aerial update.
 
     /**
      * A source that delivers less than [STALL_BYTES] in [STALL_MS] is given up for the next one
@@ -73,7 +73,6 @@ object Updates {
      * until read, and when the website has no notes (sites deployed before notes.json).
      */
     var notes by mutableStateOf<List<ReleaseNotes>>(emptyList()); private set
-    private var readingNotes = false
 
     /** Where an install started from Control Center has got to. */
     var install by mutableStateOf<Install>(Install.Idle); private set
@@ -82,26 +81,16 @@ object Updates {
     private lateinit var appContext: Context
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     private var started = false
-    private var checker: UpdateCheck? = null
 
     fun init(context: Context) {
         if (started) return
         started = true
         appContext = context.applicationContext
         prefs = context.applicationContext.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-        available = prefs.getString("latest", null)?.takeIf { newer(it, current) }
-        checker = UpdateCheck(
-            scope = scope,
-            lastSuccess = { prefs.getLong("checked_at", 0) },
-            read = { withContext(Dispatchers.IO) { read(VERSION_URL) } },
-            save = { latest, checkedAt ->
-                prefs.edit { putString("latest", latest); putLong("checked_at", checkedAt) }
-                available = latest.takeIf { newer(it, current) }
-                loadNotes()
-            },
-            log = { Log.i(TAG, it); DiagLog.i("update check: $it") },
-        )
-        loadNotes()
+        // Drop anything an earlier build cached from the author's website.
+        prefs.edit { remove("latest"); remove("notes"); remove("notes_for") }
+        available = null
+        notes = emptyList()
         // A download left from an install that has since finished or been given up.
         scope.launch(Dispatchers.IO) {
             apkFile(context).takeIf { System.currentTimeMillis() - it.lastModified() > 60 * 60 * 1000L }?.delete()
@@ -109,52 +98,25 @@ object Updates {
     }
 
     /**
-     * [force]: now, however recently it last looked (ConfigReceiver's check_update). Opening Control
-     * Center asks with a shorter [maxAgeMs]: that is where the viewer looks for a new version, and a
-     * release out an hour ago was not shown there for hours more (issue #301).
+     * Kept for the callers (MainActivity, Control Center, ConfigReceiver); there is no remote
+     * update source in this build, so nothing is checked.
      */
     fun checkIfStale(
         force: Boolean = false,
         maxAgeMs: Long = UpdateCheck.MAX_AGE_MS,
         networkCameUp: Boolean = false,
     ) {
-        checker?.check(force, maxAgeMs, networkCameUp, when {
-            force -> "forced"
-            networkCameUp -> "network"
-            maxAgeMs == CONTROL_CENTER_MAX_AGE_MS -> "control center"
-            else -> "home"
-        })
     }
 
     fun diagnostics(): String = if (!started) "not initialized" else
-        "known=${prefs.getString("latest", null) ?: "unknown"}; notes=${notes.size}; ${checker?.diagnostics}"
+        "updates off; notes=${notes.size}"
 
     /**
-     * The release notes for [available], from the copy kept with the version it was read for, else
-     * from the website (once per new version; the update page asks again while it has none). The
-     * file is about 30 KB. A missing or bad file leaves the page as it was, without notes.
+     * Release notes come from the update source, which this build does not have: the page always
+     * shows none.
      */
     fun loadNotes() {
-        if (!started) return
-        val latest = available ?: run { notes = emptyList(); return }
-        val zh = Locale.getDefault().language == "zh"
-        if (prefs.getString("notes_for", null) == latest) {
-            prefs.getString("notes", null)?.let { json ->
-                runCatching { ReleaseNotesParser.parse(json, current, latest, zh) }.getOrNull()?.let { notes = it; return }
-            }
-        }
-        if (readingNotes) return
-        readingNotes = true
-        scope.launch {
-            val json = runCatching { withContext(Dispatchers.IO) { read(NOTES_URL) } }
-                .onFailure { Log.i(TAG, "release notes: ${it.javaClass.simpleName}") }.getOrNull()
-            readingNotes = false
-            val parsed = json?.let { runCatching { ReleaseNotesParser.parse(it, current, latest, zh) }.getOrNull() }
-            // Only notes that already have this release: the site's file may be a deploy behind.
-            if (parsed.isNullOrEmpty() || parsed.first().version != latest || available != latest) return@launch
-            prefs.edit { putString("notes", json); putString("notes_for", latest) }
-            notes = parsed
-        }
+        notes = emptyList()
     }
 
     /** Whether version [a] comes after [b], comparing dotted numbers ("1.10" after "1.9"). */
@@ -541,7 +503,6 @@ object Updates {
     /** Resume failed checks; if the installer closed without replacing Aerial, reset its button. */
     fun onHomeResumed() {
         homeInFront = true
-        checker?.setActive(true)
         if (install == Install.Opened) install = Install.Idle
         awaiting?.let {
             // Only returning from a requested confirmation releases the session's button.
@@ -562,7 +523,6 @@ object Updates {
 
     fun onHomePaused() {
         homeInFront = false
-        checker?.setActive(false)
         awaiting?.takeIf { it.confirmation }?.let {
             if (!it.homeLeft) it.leftAt = SystemClock.elapsedRealtime()
             it.homeLeft = true
@@ -587,25 +547,13 @@ object Updates {
      */
     @Volatile var testApk: File? = null
 
-    /** The website first (reachable in China), then GitHub. Returns the APK's info once it parses. */
+    /** The author's website and GitHub are gone from this build; only a locally pushed test APK remains. */
     private suspend fun downloadFrom(context: Context, file: File): PackageInfo? {
         testApk?.takeIf { it.isFile }?.let { test ->
             file.parentFile?.mkdirs()
             test.copyTo(file, overwrite = true)
             if (Build.VERSION.SDK_INT < 24) file.setReadable(true, false)
             return verify(context, file)
-        }
-        val name = "aerial-${BuildConfig.FLAVOR}.apk"
-        val sources = listOf(
-            "https://aerial.qust.me/download/$name",
-            "https://github.com/pengchujin/aerial-tv/releases/latest/download/$name",
-        )
-        for (url in sources) {
-            val ok = runCatching { download(url, file) }
-                .onFailure { Log.w(TAG, "could not download $url", it) }
-                .isSuccess
-            if (ok) verify(context, file)?.let { return it }
-            file.delete()
         }
         return null
     }
